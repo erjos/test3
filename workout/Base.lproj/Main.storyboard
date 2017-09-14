@@ -334,6 +334,7 @@
                         <outlet property="repDecrease" destination="gR3-2q-CSZ" id="RNq-Ak-uyN"/>
                         <outlet property="repIncrease" destination="1Kj-8N-qGB" id="tao-CK-NZN"/>
                         <outlet property="startButton" destination="W2c-bM-dcF" id="2vH-oO-f1p"/>
+                        <outlet property="timerText" destination="l7e-VH-ziy" id="bgq-ac-YKx"/>
                         <outlet property="weightCounter" destination="qww-Ik-2MJ" id="UuM-Zd-aXu"/>
                         <outlet property="weightDecrease" destination="iPR-xU-mDa" id="LBn-9r-HVS"/>
                         <outlet property="weightIncrease" destination="vDg-Zx-w2Q" id="fwU-N0-DeQ"/>

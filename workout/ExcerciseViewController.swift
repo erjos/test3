@@ -11,14 +11,17 @@ class ExcerciseViewController: UIViewController {
     @IBOutlet weak var weightDecrease: UIButton!
     @IBOutlet weak var weightIncrease: UIButton!
    
+    @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var repCounter: UILabel!
     @IBOutlet weak var weightCounter: UILabel!
     
-    //Default values for current workout
+    var timer = Timer()
     
+    //Default values for current workout
     private var repCount = 15
     private var weightCount = 135
     private var setCount = 0 //could have a setter method that evaluates current count to max number
+    private var seconds = 0
     
     @IBOutlet weak var startButton: UIButton!
     
@@ -33,6 +36,7 @@ class ExcerciseViewController: UIViewController {
         if(startButton.backgroundColor != RED){
             startButton.backgroundColor = RED
             startButton.setTitle("Break", for: .normal)
+            runTimer()
         }else{
             startButton.backgroundColor = GREEN
             startButton.setTitle("GO!", for: .normal)
@@ -68,13 +72,15 @@ class ExcerciseViewController: UIViewController {
         weightIncrease.circleView()
         weightCounter.circleView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func runTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
-    let timer = Timer()
+    func updateTimer(){
+        seconds += 1
+        timerText.text = "\(seconds)"
+    }
 }
 
 extension UIView{
