@@ -1,7 +1,10 @@
 import UIKit
 
 class ExcerciseViewController: UIViewController {
-    
+    //Models: Routine, Session, Workout, Set
+    //Timer - when you hit go start counting up, when you hit break count down from 90
+    //Increment sets counter after each round - stop when its finished 
+        //-(could have something like isWorkoutActive bool to evaluate)
     
     @IBOutlet weak var repIncrease: UIButton!
     @IBOutlet weak var repDecrease: UIButton!
@@ -11,13 +14,16 @@ class ExcerciseViewController: UIViewController {
     @IBOutlet weak var repCounter: UILabel!
     @IBOutlet weak var weightCounter: UILabel!
     
-    var repInit = 15
-    var weightInit = 135
+    //Default values for current workout
+    
+    private var repCount = 15
+    private var weightCount = 135
+    private var setCount = 0 //could have a setter method that evaluates current count to max number
     
     @IBOutlet weak var startButton: UIButton!
+    
     //green Hex: 42E287
     //red Hex: F66451
-
     let RED = UIColor(red: 246/255, green: 100/255, blue: 81/255, alpha: 255/255)
     let GREEN = UIColor(red: 66/255, green: 226/255, blue: 135/255, alpha: 255/255)
     
@@ -37,20 +43,20 @@ class ExcerciseViewController: UIViewController {
     
     //TODO: these actions all need to work if you hold down (modify gesture)
     @IBAction func repDecreaseAction(_ sender: Any) {
-        repInit = repInit - 1
-        repCounter.text = repInit.description
+        repCount = repCount - 1
+        repCounter.text = repCount.description
     }
     @IBAction func repIncreaseAction(_ sender: Any) {
-        repInit = repInit + 1
-        repCounter.text = repInit.description
+        repCount = repCount + 1
+        repCounter.text = repCount.description
     }
     @IBAction func weightDecAction(_ sender: Any) {
-        weightInit = weightInit - 5
-        weightCounter.text = weightInit.description
+        weightCount = weightCount - 5
+        weightCounter.text = weightCount.description
     }
     @IBAction func weightIncAction(_ sender: Any) {
-        weightInit = weightInit + 5
-        weightCounter.text = weightInit.description
+        weightCount = weightCount + 5
+        weightCounter.text = weightCount.description
     }
    
     override func viewDidLoad() {
