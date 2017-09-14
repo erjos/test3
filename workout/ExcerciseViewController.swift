@@ -21,7 +21,7 @@ class ExcerciseViewController: UIViewController {
     private var repCount = 15
     private var weightCount = 135
     private var setCount = 0 //could have a setter method that evaluates current count to max number
-    private var seconds = 0
+    private var seconds: Double = 0
     
     @IBOutlet weak var startButton: UIButton!
     
@@ -33,6 +33,7 @@ class ExcerciseViewController: UIViewController {
     //IDEA: Go button might be able to incorporated into the timer
     @IBAction func startWorkout(_ sender: Any) {
         
+        //Change this to a more logical bool - isSetStarted = false
         if(startButton.backgroundColor != RED){
             startButton.backgroundColor = RED
             startButton.setTitle("Break", for: .normal)
@@ -79,7 +80,13 @@ class ExcerciseViewController: UIViewController {
     
     func updateTimer(){
         seconds += 1
-        timerText.text = "\(seconds)"
+        timerText.text = "\(timeString(time: seconds))"
+    }
+    
+    func timeString(time:TimeInterval) -> String{
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format: "%02i:%02i", minutes, seconds)
     }
 }
 
