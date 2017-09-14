@@ -41,6 +41,7 @@ class ExcerciseViewController: UIViewController {
         }else{
             startButton.backgroundColor = GREEN
             startButton.setTitle("GO!", for: .normal)
+            runBreakTimer()
         }
         
     }
@@ -75,7 +76,24 @@ class ExcerciseViewController: UIViewController {
     }
     
     func runTimer(){
+        timer.invalidate()
+        seconds = 0
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func runBreakTimer(){
+        timer.invalidate()
+        seconds = 90
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateBreakTimer), userInfo: nil, repeats: true)
+    }
+    
+    func updateBreakTimer(){
+        if(seconds == 0){
+            timer.invalidate()
+            return
+        }
+        seconds -= 1
+        timerText.text = "\(timeString(time: seconds))"
     }
     
     func updateTimer(){
