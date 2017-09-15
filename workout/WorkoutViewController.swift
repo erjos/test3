@@ -1,6 +1,8 @@
 import UIKit
 
 class WorkoutViewController: UIViewController {
+    
+    //Todo: create custom cell - give it elements that show or hide based on isExpanded bool
 
     @IBOutlet weak var excerciseTable: UITableView!
     
@@ -64,7 +66,8 @@ extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCellIndex = indexPath
         tableView.reloadRows(at: [indexPath], with: .fade)
-        //self.performSegue(withIdentifier: "showExcercise", sender: self)
+        
+        self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
