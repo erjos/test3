@@ -1,8 +1,8 @@
 import UIKit
 
 class ExcerciseViewController: UIViewController {
-    //Models: Routine, Session, Workout, Set
-    //Timer - when you hit go start counting up, when you hit break count down from 90
+    //IDEA: manual/auto toggle at the bottom of the page to allow the timere to go by itself and indicate using a single or double vibration
+    
     //Increment sets counter after each round - stop when its finished 
         //-(could have something like isWorkoutActive bool to evaluate)
     
@@ -32,13 +32,14 @@ class ExcerciseViewController: UIViewController {
     
     //IDEA: Go button might be able to incorporated into the timer
     @IBAction func startWorkout(_ sender: Any) {
-        
         //Change this to a more logical bool - isSetStarted = false
         if(startButton.backgroundColor != RED){
+            timerText.text = "00:00"
             startButton.backgroundColor = RED
             startButton.setTitle("Break", for: .normal)
             runTimer()
         }else{
+            timerText.text = "01:30"
             startButton.backgroundColor = GREEN
             startButton.setTitle("GO!", for: .normal)
             runBreakTimer()

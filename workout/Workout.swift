@@ -1,7 +1,6 @@
 import Foundation
 
 class Workout {
-    var name: String?
-    var concentration: String? //Make an enumeration
-    var sets: [Set]?
+    var concentration: String? //make an enumeration
+    var excercises: [Excercise]?
 }
