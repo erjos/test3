@@ -5,6 +5,7 @@ class WorkoutViewController: UIViewController {
     @IBOutlet weak var excerciseTable: UITableView!
     
     var currentWorkout: Workout?
+    var selectedCellIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,17 @@ extension WorkoutViewController: UITableViewDataSource {
 
 extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showExcercise", sender: self)
+        selectedCellIndex = indexPath
+        tableView.reloadData()
+        //self.performSegue(withIdentifier: "showExcercise", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let selectedIndex = selectedCellIndex{
+            if(indexPath == selectedIndex){
+                return 100.00
+            }
+        }
+        return 44.0
     }
 }
