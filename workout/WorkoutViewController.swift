@@ -63,7 +63,7 @@ extension WorkoutViewController: UITableViewDataSource {
 extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCellIndex = indexPath
-        tableView.reloadData()
+        tableView.reloadRows(at: [indexPath], with: .fade)
         //self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
