@@ -11,7 +11,8 @@ class WorkoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        excerciseTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        //excerciseTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         // Do any additional setup after loading the view.
         currentWorkout = mockChestWorkout()
     }
@@ -56,18 +57,28 @@ extension WorkoutViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = currentWorkout?.excercises?[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
+        cell.title.text = currentWorkout?.excercises?[indexPath.row].name
+        cell.startButton.isHidden = true
+        cell.stroke.isHidden = true
         return cell
     }
 }
 
 extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(selectedCellIndex != nil){
+            let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
+            previousCell.stroke.isHidden = true
+            previousCell.startButton.isHidden = true
+        }
+        
         selectedCellIndex = indexPath
         tableView.reloadRows(at: [indexPath], with: .fade)
-        
-        self.performSegue(withIdentifier: "showExcercise", sender: self)
+        let cell = tableView.cellForRow(at: indexPath) as! WorkoutTableViewCell
+        cell.startButton.isHidden = false
+        cell.stroke.isHidden = false
+        //self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
