@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="380" height="141"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="380" height="140.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="380" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnU-aD-wPO">
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZX-bF-QoJ" userLabel="Stroke">
-                        <rect key="frame" x="8" y="49" width="364" height="1"/>
+                        <rect key="frame" x="0.0" y="49" width="380" height="1"/>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.83921568629999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="4TB-ra-QZi"/>
@@ -39,6 +39,11 @@
                             <action selector="start:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GwP-wL-AmK"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLn-mb-ybf">
+                        <rect key="frame" x="322" y="52.5" width="30" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" title="Skip"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="PWk-vu-EMS" secondAttribute="bottom" constant="10" id="P7P-DH-08g"/>
@@ -46,11 +51,15 @@
                     <constraint firstItem="bnU-aD-wPO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="d5Q-Tw-Fqu"/>
                     <constraint firstItem="bnU-aD-wPO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="dsN-QV-9dm"/>
                     <constraint firstItem="ZZX-bF-QoJ" firstAttribute="top" secondItem="bnU-aD-wPO" secondAttribute="bottom" constant="10" id="jiO-bb-l4b"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ZZX-bF-QoJ" secondAttribute="trailing" id="kv0-a9-PH7"/>
-                    <constraint firstItem="ZZX-bF-QoJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="t5c-cr-6KQ"/>
+                    <constraint firstAttribute="trailing" secondItem="ZZX-bF-QoJ" secondAttribute="trailing" id="kv0-a9-PH7"/>
+                    <constraint firstItem="ZZX-bF-QoJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="t5c-cr-6KQ"/>
+                    <constraint firstItem="PWk-vu-EMS" firstAttribute="top" secondItem="DLn-mb-ybf" secondAttribute="bottom" constant="10" id="uFP-1G-W1M"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DLn-mb-ybf" secondAttribute="trailing" constant="20" id="uWm-uY-Wjk"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="skipButton" destination="DLn-mb-ybf" id="d0v-Tp-Ipc"/>
                 <outlet property="startButton" destination="PWk-vu-EMS" id="yB3-Zs-AsF"/>
                 <outlet property="stroke" destination="ZZX-bF-QoJ" id="bV9-jP-mnL"/>
                 <outlet property="title" destination="bnU-aD-wPO" id="YJt-Q1-2eb"/>

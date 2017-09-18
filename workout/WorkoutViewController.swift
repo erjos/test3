@@ -59,6 +59,7 @@ extension WorkoutViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
         cell.title.text = currentWorkout?.excercises?[indexPath.row].name
+        cell.skipButton.isHidden = true
         cell.startButton.isHidden = true
         cell.stroke.isHidden = true
         return cell
@@ -71,20 +72,24 @@ extension WorkoutViewController: UITableViewDelegate {
             let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
             previousCell.stroke.isHidden = true
             previousCell.startButton.isHidden = true
+            previousCell.skipButton.isHidden = true
         }
         
+        //TODO: encapsulate expand and collapse logic into single method that lives on the custom cell
+        //If an already expanded cell is re-selected, then collapse the cell
         selectedCellIndex = indexPath
-        tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
         let cell = tableView.cellForRow(at: indexPath) as! WorkoutTableViewCell
         cell.startButton.isHidden = false
         cell.stroke.isHidden = false
+        cell.skipButton.isHidden = false
         //self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let selectedIndex = selectedCellIndex{
             if(indexPath == selectedIndex){
-                return 100.00
+                return 140.00
             }
         }
         return 44.0

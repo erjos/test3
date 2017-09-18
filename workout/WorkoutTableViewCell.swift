@@ -4,6 +4,7 @@ class WorkoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var stroke: UIView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBAction func start(_ sender: Any) {
     }
