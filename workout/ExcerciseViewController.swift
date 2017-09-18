@@ -6,7 +6,9 @@ class ExcerciseViewController: UIViewController {
     //Increment sets counter after each round - stop when its finished 
         //-(could have something like isWorkoutActive bool to evaluate)
     
+    //TODO: change to "currentExcerciseName"
     @IBOutlet weak var currentWorkoutName: UIBarButtonItem!
+    
     @IBOutlet weak var backItem: UIBarButtonItem!
     @IBOutlet weak var repIncrease: UIButton!
     @IBOutlet weak var repDecrease: UIButton!
@@ -31,6 +33,8 @@ class ExcerciseViewController: UIViewController {
     //red Hex: F66451
     let RED = UIColor(red: 246/255, green: 100/255, blue: 81/255, alpha: 255/255)
     let GREEN = UIColor(red: 66/255, green: 226/255, blue: 135/255, alpha: 255/255)
+    
+    var currentExcercise: Excercise?
     
     //IDEA: Go button might be able to incorporated into the timer
     @IBAction func startWorkout(_ sender: Any) {
@@ -77,27 +81,20 @@ class ExcerciseViewController: UIViewController {
         weightIncrease.circleView()
         weightCounter.circleView()
         
-//        let image = UIImage(named: "arrow-white")
-//        let rect = CGRect(x: 0, y: 0, width: 25, height: 50)
-//        let size = CGSize(width: 25, height: 50)
-//        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
-//        image?.draw(in: rect)
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-        
+        //Set back arrow
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "left-arrow")
         imageView.image = image
-        let gestures = UITapGestureRecognizer(target: self, action: #selector(selector))
+        let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
         imageView.addGestureRecognizer(gestures)
         backItem.customView = imageView
-        //backItem.setBackgroundImage(newImage, for: .normal, style: .plain, barMetrics: .default)
+        
+        currentWorkoutName.title = currentExcercise?.name
     }
     
-    func selector(){
-        let workoutVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "workout")
-        self.navigationController?.popViewController(animated: true)
+    func popVC(){
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     func runTimer(){
