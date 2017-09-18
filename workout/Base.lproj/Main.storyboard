@@ -460,11 +460,11 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routine #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNu-8c-nhA">
                                         <rect key="frame" x="20" y="22" width="80.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84527304599999997" green="0.84527304599999997" blue="0.84527304599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="FE5-7B-S5p"/>
                                     <constraint firstItem="YNu-8c-nhA" firstAttribute="leading" secondItem="o1h-6r-6W3" secondAttribute="leading" constant="20" id="Fyq-ET-O28"/>
@@ -482,7 +482,11 @@
                             <constraint firstAttribute="trailing" secondItem="o1h-6r-6W3" secondAttribute="trailing" id="q0y-8B-CcB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="5Xr-cR-die"/>
+                    <navigationItem key="navigationItem" id="5Xr-cR-die">
+                        <barButtonItem key="leftBarButtonItem" title="Routine Label" id="g3m-3I-S5F">
+                            <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="workoutTable" destination="67w-na-TrA" id="sQh-lx-PcD"/>
                         <segue destination="kRk-60-whn" kind="show" identifier="showWorkout" id="qbG-o0-KUF"/>
@@ -501,6 +505,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

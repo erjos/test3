@@ -2,7 +2,6 @@ import UIKit
 
 class WorkoutViewController: UIViewController {
     
-    
     @IBOutlet weak var backItem: UIBarButtonItem!
     @IBOutlet weak var currentWorkoutTitle: UIBarButtonItem!
     //IDEA - would be cool to animate the completion of a workout with the drawing of a check mark next to the excercise
@@ -15,7 +14,7 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        currentWorkout = mockChestWorkout()
+        //currentWorkout = mockChestWorkout()
         currentWorkoutTitle.title = (currentWorkout?.concentration)! + " Workout"
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -30,29 +29,6 @@ class WorkoutViewController: UIViewController {
     func popVC(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    public func generateSets(numberOfsets: Int, weight: Int?, toFail:Bool, reps: Int?) -> [Set]{
-        var sets = [Set]()
-        for _ in 0..<numberOfsets{
-            let set = Set(weight: weight, toFailure: toFail, reps: reps)
-            sets.append(set)
-        }
-        return sets
-    }
-    
-    public func mockChestWorkout() -> Workout {
-        let mock = Workout()
-        let exerc1 = Excercise(name: "Dumbbell Bench Press", sets: generateSets(numberOfsets: 4, weight: 55, toFail: false, reps: 12))
-        let exerc2 = Excercise(name: "Dumbbell Incline", sets: generateSets(numberOfsets: 4, weight: 35, toFail: false, reps: 12))
-        let exerc3 = Excercise(name: "Dumbbell Flyes", sets: generateSets(numberOfsets: 4, weight: 25, toFail: true, reps: nil))
-        let exerc4 = Excercise(name: "Incline Hammer Curls", sets: generateSets(numberOfsets: 4, weight: 25, toFail: false, reps: 12))
-        let exerc5 = Excercise(name: "Dips (chest)", sets: generateSets(numberOfsets: 4, weight: nil, toFail: true, reps: nil))
-        let exerc6 = Excercise(name: "Cardio", sets: nil)
-        mock.excercises = [exerc1, exerc2, exerc3, exerc4, exerc5, exerc6]
-        mock.concentration = "Chest"
-        return mock
-    }
-
     /*
     // MARK: - Navigation
 

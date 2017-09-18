@@ -7,7 +7,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        //Hides nav bar shadow for all navigation bars
+//        UINavigationBar.appearance().setBackgroundImage(
+//            UIImage(),
+//            for: .any,
+//            barMetrics: .default)
+//        
+//        UINavigationBar.appearance().shadowImage = UIImage()
         return true
     }
 
