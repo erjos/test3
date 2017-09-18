@@ -6,6 +6,8 @@ class ExcerciseViewController: UIViewController {
     //Increment sets counter after each round - stop when its finished 
         //-(could have something like isWorkoutActive bool to evaluate)
     
+    @IBOutlet weak var currentWorkoutName: UIBarButtonItem!
+    @IBOutlet weak var backItem: UIBarButtonItem!
     @IBOutlet weak var repIncrease: UIButton!
     @IBOutlet weak var repDecrease: UIButton!
     @IBOutlet weak var weightDecrease: UIButton!
@@ -74,6 +76,28 @@ class ExcerciseViewController: UIViewController {
         weightDecrease.circleView()
         weightIncrease.circleView()
         weightCounter.circleView()
+        
+//        let image = UIImage(named: "arrow-white")
+//        let rect = CGRect(x: 0, y: 0, width: 25, height: 50)
+//        let size = CGSize(width: 25, height: 50)
+//        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
+//        image?.draw(in: rect)
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "left-arrow")
+        imageView.image = image
+        let gestures = UITapGestureRecognizer(target: self, action: #selector(selector))
+        imageView.addGestureRecognizer(gestures)
+        backItem.customView = imageView
+        //backItem.setBackgroundImage(newImage, for: .normal, style: .plain, barMetrics: .default)
+    }
+    
+    func selector(){
+        let workoutVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "workout")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func runTimer(){

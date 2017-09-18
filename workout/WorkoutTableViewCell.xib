@@ -37,6 +37,7 @@
                         <state key="normal" title="Start"/>
                         <connections>
                             <action selector="start:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GwP-wL-AmK"/>
+                            <action selector="startAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A2K-RR-ycw"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLn-mb-ybf">

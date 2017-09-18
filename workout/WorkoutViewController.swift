@@ -2,7 +2,10 @@ import UIKit
 
 class WorkoutViewController: UIViewController {
     
-    //Todo: create custom cell - give it elements that show or hide based on isExpanded bool
+    
+    @IBOutlet weak var backItem: UIBarButtonItem!
+    @IBOutlet weak var currentWorkoutTitle: UIBarButtonItem!
+    //IDEA - would be cool to animate the completion of a workout with the drawing of a check mark next to the excercise
 
     @IBOutlet weak var excerciseTable: UITableView!
     
@@ -12,9 +15,20 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        //excerciseTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        // Do any additional setup after loading the view.
         currentWorkout = mockChestWorkout()
+        currentWorkoutTitle.title = (currentWorkout?.concentration)! + " Workout"
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "left-arrow")
+        imageView.image = image
+        let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
+        imageView.addGestureRecognizer(gestures)
+        backItem.customView = imageView
+    }
+    
+    func popVC(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     public func generateSets(numberOfsets: Int, weight: Int?, toFail:Bool, reps: Int?) -> [Set]{
@@ -35,6 +49,7 @@ class WorkoutViewController: UIViewController {
         let exerc5 = Excercise(name: "Dips (chest)", sets: generateSets(numberOfsets: 4, weight: nil, toFail: true, reps: nil))
         let exerc6 = Excercise(name: "Cardio", sets: nil)
         mock.excercises = [exerc1, exerc2, exerc3, exerc4, exerc5, exerc6]
+        mock.concentration = "Chest"
         return mock
     }
 
@@ -58,6 +73,7 @@ extension WorkoutViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
+        cell.delegate = self
         cell.title.text = currentWorkout?.excercises?[indexPath.row].name
         cell.skipButton.isHidden = true
         cell.startButton.isHidden = true
@@ -83,7 +99,7 @@ extension WorkoutViewController: UITableViewDelegate {
         cell.startButton.isHidden = false
         cell.stroke.isHidden = false
         cell.skipButton.isHidden = false
-        //self.performSegue(withIdentifier: "showExcercise", sender: self)
+//        self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,5 +109,11 @@ extension WorkoutViewController: UITableViewDelegate {
             }
         }
         return 44.0
+    }
+}
+
+extension WorkoutViewController: WorkoutTableViewCellDelegate{
+    func didHitStartButton(cell: WorkoutTableViewCell) {
+        self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
 }
