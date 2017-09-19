@@ -45,20 +45,30 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Skip"/>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-cD-VaI" userLabel="Stroke">
+                        <rect key="frame" x="0.0" y="135.5" width="380" height="5"/>
+                        <color key="backgroundColor" red="0.84313725490000002" green="0.83921568629999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="SJe-r3-gNt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="PWk-vu-EMS" secondAttribute="bottom" constant="10" id="P7P-DH-08g"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PWk-vu-EMS" secondAttribute="trailing" constant="20" id="XQK-J9-ZvD"/>
+                    <constraint firstAttribute="bottom" secondItem="ZxB-cD-VaI" secondAttribute="bottom" id="awB-le-pWg"/>
                     <constraint firstItem="bnU-aD-wPO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="d5Q-Tw-Fqu"/>
                     <constraint firstItem="bnU-aD-wPO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="dsN-QV-9dm"/>
+                    <constraint firstItem="ZxB-cD-VaI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fTt-Sf-tFQ"/>
                     <constraint firstItem="ZZX-bF-QoJ" firstAttribute="top" secondItem="bnU-aD-wPO" secondAttribute="bottom" constant="10" id="jiO-bb-l4b"/>
                     <constraint firstAttribute="trailing" secondItem="ZZX-bF-QoJ" secondAttribute="trailing" id="kv0-a9-PH7"/>
                     <constraint firstItem="ZZX-bF-QoJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="t5c-cr-6KQ"/>
                     <constraint firstItem="PWk-vu-EMS" firstAttribute="top" secondItem="DLn-mb-ybf" secondAttribute="bottom" constant="10" id="uFP-1G-W1M"/>
                     <constraint firstAttribute="trailingMargin" secondItem="DLn-mb-ybf" secondAttribute="trailing" constant="20" id="uWm-uY-Wjk"/>
+                    <constraint firstAttribute="trailing" secondItem="ZxB-cD-VaI" secondAttribute="trailing" id="v99-ml-gjQ"/>
                 </constraints>
             </tableViewCellContentView>
-            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="skipButton" destination="DLn-mb-ybf" id="d0v-Tp-Ipc"/>
                 <outlet property="startButton" destination="PWk-vu-EMS" id="yB3-Zs-AsF"/>

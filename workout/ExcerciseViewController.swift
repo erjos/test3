@@ -18,13 +18,14 @@ class ExcerciseViewController: UIViewController {
     @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var repCounter: UILabel!
     @IBOutlet weak var weightCounter: UILabel!
+    @IBOutlet weak var setCounter: UILabel!
     
     var timer = Timer()
     
     //Default values for current workout
-    private var repCount = 15
-    private var weightCount = 135
-    private var setCount = 0 //could have a setter method that evaluates current count to max number
+    private var repCount: Int?
+    private var weightCount: Int?
+    private var setCount: Int?
     private var seconds: Double = 0
     
     @IBOutlet weak var startButton: UIButton!
@@ -49,39 +50,54 @@ class ExcerciseViewController: UIViewController {
             startButton.backgroundColor = GREEN
             startButton.setTitle("GO!", for: .normal)
             runBreakTimer()
+            
         }
-        
     }
     
     
     //TODO: these actions all need to work if you hold down (modify gesture)
     @IBAction func repDecreaseAction(_ sender: Any) {
-        repCount = repCount - 1
-        repCounter.text = repCount.description
+        guard let reps = repCount else {
+            return
+        }
+        repCount = reps - 1
+        repCounter.text = repCount?.description
     }
     @IBAction func repIncreaseAction(_ sender: Any) {
-        repCount = repCount + 1
-        repCounter.text = repCount.description
+        guard let reps = repCount else {
+            return
+        }
+        repCount = reps + 1
+        repCounter.text = repCount?.description
     }
     @IBAction func weightDecAction(_ sender: Any) {
-        weightCount = weightCount - 5
-        weightCounter.text = weightCount.description
+        guard let weight = weightCount else {
+            return
+        }
+        weightCount = weight - 5
+        weightCounter.text = weightCount?.description
     }
     @IBAction func weightIncAction(_ sender: Any) {
-        weightCount = weightCount + 5
-        weightCounter.text = weightCount.description
+        guard let weight = weightCount else {
+            return
+        }
+        weightCount = weight + 5
+        weightCounter.text = weightCount?.description
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Setup circle views---
         repDecrease.circleView()
         repIncrease.circleView()
         repCounter.circleView()
         weightDecrease.circleView()
         weightIncrease.circleView()
         weightCounter.circleView()
+        //---
         
-        //Set back arrow
+        //Setup back arrow---
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "left-arrow")
@@ -89,8 +105,23 @@ class ExcerciseViewController: UIViewController {
         let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
         imageView.addGestureRecognizer(gestures)
         backItem.customView = imageView
+        //---
         
+        //setup data for view---
         currentWorkoutName.title = currentExcercise?.name
+            //setup sets
+        let sets =  currentExcercise?.sets?.count.description ?? "NA"
+        setCounter.text = "0/" + sets
+        
+            //setup reps
+        repCount = currentExcercise?.sets?[0].reps
+        let reps = repCount?.description ?? "N/A"
+        repCounter.text = reps
+            //setup weight
+        weightCount = currentExcercise?.sets?[0].weight
+        let weight = weightCount?.description ?? "N/A"
+        weightCounter.text = weight
+        //---
     }
     
     func popVC(){

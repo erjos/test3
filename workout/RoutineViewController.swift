@@ -1,6 +1,7 @@
 import UIKit
 
 class RoutineViewController: UIViewController {
+    @IBOutlet weak var routineLabel: UIBarButtonItem!
     @IBOutlet weak var workoutTable: UITableView!
     var routine: Routine?
     var selectedWorkout: Workout?
@@ -12,6 +13,7 @@ class RoutineViewController: UIViewController {
         routine?.workouts = [WorkoutMocks.mockChestWorkout(), WorkoutMocks.mockShoulderWorkout(), WorkoutMocks.mockArmsWorkout(), WorkoutMocks.mockBackWorkout()]
         //Hides Shadow of nav bar for just this page
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        self.routineLabel.title = routine?.name
         // Do any additional setup after loading the view.
     }
 

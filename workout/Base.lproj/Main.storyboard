@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-7e-qXQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-7e-qXQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDB-aJ-dJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="136.28185907046478"/>
+            <point key="canvasLocation" x="1062" y="136"/>
         </scene>
         <!--Excercise View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -295,7 +295,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/02/17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1s-7J-0zV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/02/17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1s-7J-0zV">
                                         <rect key="frame" x="20" y="0.0" width="70" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="CX0-Cf-EeY"/>
@@ -330,7 +330,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/02/17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-PG-lTX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/02/17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-PG-lTX">
                                         <rect key="frame" x="20" y="0.0" width="70" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="RsB-EI-A7p"/>
@@ -392,6 +392,7 @@
                         <outlet property="repCounter" destination="Svy-Dz-G8y" id="zKs-Hn-O7W"/>
                         <outlet property="repDecrease" destination="gR3-2q-CSZ" id="RNq-Ak-uyN"/>
                         <outlet property="repIncrease" destination="1Kj-8N-qGB" id="tao-CK-NZN"/>
+                        <outlet property="setCounter" destination="UDa-bD-zyH" id="wf2-QJ-w5z"/>
                         <outlet property="startButton" destination="W2c-bM-dcF" id="2vH-oO-f1p"/>
                         <outlet property="timerText" destination="l7e-VH-ziy" id="bgq-ac-YKx"/>
                         <outlet property="weightCounter" destination="qww-Ik-2MJ" id="UuM-Zd-aXu"/>
@@ -401,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="134.48275862068968"/>
+            <point key="canvasLocation" x="1834" y="136"/>
         </scene>
         <!--Routine View Controller-->
         <scene sceneID="9Xn-HY-npR">
@@ -416,7 +417,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="67w-na-TrA">
-                                <rect key="frame" x="0.0" y="45" width="375" height="451"/>
+                                <rect key="frame" x="0.0" y="25" width="375" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="451" id="phT-Pr-xoa"/>
@@ -427,10 +428,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1h-6r-6W3" userLabel="Top Bar">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="FE5-7B-S5p"/>
+                                    <constraint firstAttribute="height" constant="25" id="FE5-7B-S5p"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -450,6 +451,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="routineLabel" destination="g3m-3I-S5F" id="3hG-7w-ayQ"/>
                         <outlet property="workoutTable" destination="67w-na-TrA" id="sQh-lx-PcD"/>
                         <segue destination="kRk-60-whn" kind="show" identifier="showWorkout" id="qbG-o0-KUF"/>
                     </connections>
@@ -478,7 +480,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXZ-PR-hq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-671.20000000000005" y="135.38230884557723"/>
+            <point key="canvasLocation" x="-500" y="136"/>
         </scene>
     </scenes>
 </document>
