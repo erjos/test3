@@ -38,29 +38,31 @@ class ExcerciseViewController: UIViewController {
     
     var isWorkoutComplete = false
     var isWorkoutActive = false
-    var isTimerRunning = false
+    var isWorkoutStarted = false
     
     @IBAction func startWorkout(_ sender: Any) {
-        guard(!isWorkoutComplete) else {
+        if(isWorkoutComplete){
             return
         }
         //represents first button click where sets should not increment
-        if(!isTimerRunning && !isWorkoutActive){
-            
-        }
-        
-        if(!isWorkoutComplete && !isWorkoutActive){
-            //Should be same as the timer completion method
-            incrementSets()
-            timer.invalidate()
+        if(!isWorkoutStarted){
             configBreakButton()
             timerText.text = "90"
+            isWorkoutStarted = true
             isWorkoutActive = true
+            return
         }
-        if(!isWorkoutComplete && isWorkoutActive){
+        
+        if(!isWorkoutActive){
+            handleEndTimer()
+            return
+        }
+        
+        if(isWorkoutActive){
             runBreakTimer()
             configStartButton()
             isWorkoutActive = false
+            return
         }
     }
     
@@ -158,16 +160,19 @@ class ExcerciseViewController: UIViewController {
     
     func updateBreakTimer(){
         if(seconds == 0){
-            //Similar to first part of the startButton action
-            timer.invalidate()
-            configBreakButton()
-            timerText.text = "90"
-            isWorkoutActive = true
-            incrementSets()
+            handleEndTimer()
             return
         }
         seconds -= 1
         timerText.text = "\(Int(seconds))"
+    }
+    
+    func handleEndTimer(){
+        timer.invalidate()
+        configBreakButton()
+        timerText.text = "90"
+        isWorkoutActive = true
+        incrementSets()
     }
     
     func incrementSets(){
