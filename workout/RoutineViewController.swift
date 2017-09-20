@@ -1,30 +1,28 @@
 import UIKit
 
 class RoutineViewController: UIViewController {
+    
     @IBOutlet weak var routineLabel: UIBarButtonItem!
     @IBOutlet weak var workoutTable: UITableView!
+    
     var routine: Routine?
     var selectedWorkout: Workout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        routine = Routine()
-        routine?.name = "Ethan's Routine"
-        routine?.workouts = [WorkoutMocks.mockChestWorkout(), WorkoutMocks.mockShoulderWorkout(), WorkoutMocks.mockArmsWorkout(), WorkoutMocks.mockBackWorkout()]
-        //Hides Shadow of nav bar for just this page
+        
+        //Set the users routine
+        routine = WorkoutMocks.mockRoutine()
+        
+        //Hides nav bar shadow for current page
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.routineLabel.title = routine?.name
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let workoutVC = segue.destination as! WorkoutViewController
-        workoutVC.currentWorkout = selectedWorkout
+        workoutVC.modelWorkout = selectedWorkout
     }
     
 }

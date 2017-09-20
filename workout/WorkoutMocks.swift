@@ -2,6 +2,13 @@ import Foundation
 
 class WorkoutMocks{
     
+    public class func mockRoutine() -> Routine{
+        let routine = Routine()
+        routine.name = "Ethan's Routine"
+        routine.workouts = [mockChestWorkout(), mockShoulderWorkout(), mockArmsWorkout(), mockBackWorkout()]
+        return routine
+    }
+    
     class func generateSets(numberOfsets: Int, weight: Int?, toFail:Bool, reps: Int?) -> [Set]{
         var sets = [Set]()
         for _ in 0..<numberOfsets{

@@ -6,7 +6,6 @@ class ExcerciseViewController: UIViewController {
     //Increment sets counter after each round - stop when its finished 
         //-(could have something like isWorkoutActive bool to evaluate)
     
-    //TODO: change to "currentExcerciseName"
     @IBOutlet weak var currentWorkoutName: UIBarButtonItem!
     
     @IBOutlet weak var backItem: UIBarButtonItem!
@@ -25,7 +24,7 @@ class ExcerciseViewController: UIViewController {
     //Default values for current workout
     private var repCount: Int?
     private var weightCount: Int?
-    private var setCount: Int?
+    private var setCount = 0
     private var seconds: Double = 0
     
     @IBOutlet weak var startButton: UIButton!
@@ -35,23 +34,44 @@ class ExcerciseViewController: UIViewController {
     let RED = UIColor(red: 246/255, green: 100/255, blue: 81/255, alpha: 255/255)
     let GREEN = UIColor(red: 66/255, green: 226/255, blue: 135/255, alpha: 255/255)
     
-    var currentExcercise: Excercise?
+    var modelExcercise: Excercise?
     
-    //IDEA: Go button might be able to incorporated into the timer
+    var isWorkoutComplete = false
+    var isWorkoutActive = false
+    var isTimerRunning = false
+    
     @IBAction func startWorkout(_ sender: Any) {
-        //Change this to a more logical bool - isSetStarted = false
-        if(startButton.backgroundColor != RED){
-            timerText.text = "00:00"
-            startButton.backgroundColor = RED
-            startButton.setTitle("Break", for: .normal)
-            runTimer()
-        }else{
-            timerText.text = "01:30"
-            startButton.backgroundColor = GREEN
-            startButton.setTitle("GO!", for: .normal)
-            runBreakTimer()
+        guard(!isWorkoutComplete) else {
+            return
+        }
+        //represents first button click where sets should not increment
+        if(!isTimerRunning && !isWorkoutActive){
             
         }
+        
+        if(!isWorkoutComplete && !isWorkoutActive){
+            //Should be same as the timer completion method
+            incrementSets()
+            timer.invalidate()
+            configBreakButton()
+            timerText.text = "90"
+            isWorkoutActive = true
+        }
+        if(!isWorkoutComplete && isWorkoutActive){
+            runBreakTimer()
+            configStartButton()
+            isWorkoutActive = false
+        }
+    }
+    
+    func configBreakButton(){
+        startButton.backgroundColor = RED
+        startButton.setTitle("Break", for: .normal)
+    }
+    
+    func configStartButton(){
+        startButton.backgroundColor = GREEN
+        startButton.setTitle("Start", for: .normal)
     }
     
     
@@ -63,6 +83,7 @@ class ExcerciseViewController: UIViewController {
         repCount = reps - 1
         repCounter.text = repCount?.description
     }
+    
     @IBAction func repIncreaseAction(_ sender: Any) {
         guard let reps = repCount else {
             return
@@ -70,6 +91,7 @@ class ExcerciseViewController: UIViewController {
         repCount = reps + 1
         repCounter.text = repCount?.description
     }
+    
     @IBAction func weightDecAction(_ sender: Any) {
         guard let weight = weightCount else {
             return
@@ -77,6 +99,7 @@ class ExcerciseViewController: UIViewController {
         weightCount = weight - 5
         weightCounter.text = weightCount?.description
     }
+    
     @IBAction func weightIncAction(_ sender: Any) {
         guard let weight = weightCount else {
             return
@@ -87,7 +110,6 @@ class ExcerciseViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Setup circle views---
         repDecrease.circleView()
         repIncrease.circleView()
@@ -108,17 +130,17 @@ class ExcerciseViewController: UIViewController {
         //---
         
         //setup data for view---
-        currentWorkoutName.title = currentExcercise?.name
+        currentWorkoutName.title = modelExcercise?.name
             //setup sets
-        let sets =  currentExcercise?.sets?.count.description ?? "NA"
+        let sets =  modelExcercise?.sets?.count.description ?? "NA"
         setCounter.text = "0/" + sets
         
             //setup reps
-        repCount = currentExcercise?.sets?[0].reps
+        repCount = modelExcercise?.sets?[0].reps
         let reps = repCount?.description ?? "N/A"
         repCounter.text = reps
             //setup weight
-        weightCount = currentExcercise?.sets?[0].weight
+        weightCount = modelExcercise?.sets?[0].weight
         let weight = weightCount?.description ?? "N/A"
         weightCounter.text = weight
         //---
@@ -126,12 +148,6 @@ class ExcerciseViewController: UIViewController {
     
     func popVC(){
         let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    func runTimer(){
-        timer.invalidate()
-        seconds = 0
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     func runBreakTimer(){
@@ -142,23 +158,45 @@ class ExcerciseViewController: UIViewController {
     
     func updateBreakTimer(){
         if(seconds == 0){
+            //Similar to first part of the startButton action
             timer.invalidate()
+            configBreakButton()
+            timerText.text = "90"
+            isWorkoutActive = true
+            incrementSets()
             return
         }
         seconds -= 1
-        timerText.text = "\(timeString(time: seconds))"
+        timerText.text = "\(Int(seconds))"
     }
     
-    func updateTimer(){
-        seconds += 1
-        timerText.text = "\(timeString(time: seconds))"
+    func incrementSets(){
+        setCount += 1
+        let sets = modelExcercise?.sets?.count
+        let setsText = modelExcercise?.sets?.count.description ?? "NA"
+        setCounter.text = "\(setCount)/\(setsText)"
+        if(setCount == sets){
+            isWorkoutComplete = true
+        }
     }
     
-    func timeString(time:TimeInterval) -> String{
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format: "%02i:%02i", minutes, seconds)
-    }
+//    func runTimer(){
+//        timer.invalidate()
+//        seconds = 0
+//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+//    }
+    
+//    func updateTimer(){
+//        seconds += 1
+//        timerText.text = "\(timeString(time: seconds))"
+//    }
+
+    
+//    func timeString(time:TimeInterval) -> String{
+//        let minutes = Int(time) / 60 % 60
+//        let seconds = Int(time) % 60
+//        return String(format: "%02i:%02i", minutes, seconds)
+//    }
 }
 
 extension UIView{

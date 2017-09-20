@@ -1,22 +1,20 @@
 import UIKit
 
 class WorkoutViewController: UIViewController {
+    //IDEA - would be cool to animate the completion of a workout with the drawing of a check mark next to the excercise
     
     @IBOutlet weak var backItem: UIBarButtonItem!
     @IBOutlet weak var currentWorkoutTitle: UIBarButtonItem!
-    //IDEA - would be cool to animate the completion of a workout with the drawing of a check mark next to the excercise
-
     @IBOutlet weak var excerciseTable: UITableView!
     
-    var currentWorkout: Workout?
+    var modelWorkout: Workout?
     var selectedCellIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         //currentWorkout = mockChestWorkout()
-        currentWorkoutTitle.title = (currentWorkout?.concentration)! + " Workout"
-        
+        currentWorkoutTitle.title = (modelWorkout?.concentration)! + " Workout"
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "left-arrow")
@@ -32,20 +30,20 @@ class WorkoutViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let excerciseVC = segue.destination as! ExcerciseViewController
-        excerciseVC.currentExcercise = currentWorkout?.excercises?[(selectedCellIndex?.row)!]
+        excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedCellIndex?.row)!]
     }
 }
 
 extension WorkoutViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (currentWorkout?.excercises?.count)!
+        return (modelWorkout?.excercises?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
         cell.delegate = self
-        cell.title.text = currentWorkout?.excercises?[indexPath.row].name
+        cell.title.text = modelWorkout?.excercises?[indexPath.row].name
         cell.skipButton.isHidden = true
         cell.startButton.isHidden = true
         cell.stroke.isHidden = true
