@@ -74,10 +74,10 @@ extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let selectedIndex = selectedCellIndex{
             if(indexPath == selectedIndex){
-                return 140.00
+                return 160.00
             }
         }
-        return 44.0
+        return 64.0
     }
 }
 

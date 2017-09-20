@@ -34,6 +34,7 @@ class ExcerciseViewController: UIViewController {
     
     @IBAction func startWorkout(_ sender: Any) {
         if(isWorkoutComplete){
+            popVC()
             return
         }
         if(!isWorkoutStarted){
