@@ -3,16 +3,15 @@ import UIKit
 class ExcerciseViewController: UIViewController {
     //IDEA: manual/auto toggle at the bottom of the page to allow the timere to go by itself and indicate using a single or double vibration
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var currentWorkoutName: UIBarButtonItem!
     @IBOutlet weak var backItem: UIBarButtonItem!
     @IBOutlet weak var repIncrease: UIButton!
     @IBOutlet weak var repDecrease: UIButton!
     @IBOutlet weak var weightDecrease: UIButton!
     @IBOutlet weak var weightIncrease: UIButton!
-    @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var repCounter: UILabel!
     @IBOutlet weak var weightCounter: UILabel!
-    @IBOutlet weak var setCounter: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
     //RED:F66451
@@ -30,6 +29,7 @@ class ExcerciseViewController: UIViewController {
     private var isWorkoutActive = false
     private var isWorkoutStarted = false
     
+    var hex2: UIView?
     var modelExcercise: Excercise?
     
     @IBAction func startWorkout(_ sender: Any) {
@@ -53,7 +53,7 @@ class ExcerciseViewController: UIViewController {
     
     func startWorkout(){
         configBreakButton()
-        timerText.text = "90"
+        //timerText.text = "90"
         isWorkoutStarted = true
         isWorkoutActive = true
     }
@@ -61,7 +61,7 @@ class ExcerciseViewController: UIViewController {
     func startNextSet(){
         timer.invalidate()
         configBreakButton()
-        timerText.text = "90"
+        //timerText.text = "90"
         isWorkoutActive = true
         incrementSets()
     }
@@ -76,7 +76,7 @@ class ExcerciseViewController: UIViewController {
         setCount += 1
         let sets = modelExcercise?.sets?.count
         let setsText = modelExcercise?.sets?.count.description ?? "NA"
-        setCounter.text = "\(setCount)/\(setsText)"
+        //setCounter.text = "\(setCount)/\(setsText)"
         if(setCount == sets){
             configWorkoutComplete()
         }
@@ -94,7 +94,7 @@ class ExcerciseViewController: UIViewController {
             return
         }
         seconds -= 1
-        timerText.text = "\(Int(seconds))"
+        //timerText.text = "\(Int(seconds))"
     }
     
     func configWorkoutComplete(){
@@ -146,6 +146,16 @@ class ExcerciseViewController: UIViewController {
         weightCount = weight + 5
         weightCounter.text = weightCount?.description
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Need to do a better job of calculating these positions so it works well with various devices
+        UIView.animate(withDuration: 0.5, animations: {
+            var point = self.view.center
+            point.y = 300
+            self.hex2?.frame = CGRect(x: 0, y: 0, width: 500, height: 500)
+            self.hex2?.center = point
+        })
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,11 +178,14 @@ class ExcerciseViewController: UIViewController {
         backItem.customView = imageView
         //---
         
+        collectionView.register(UINib.init(nibName: "HexCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "hexCell")
+        
+        
         //setup data for view---
         currentWorkoutName.title = modelExcercise?.name
             //setup sets
         let sets =  modelExcercise?.sets?.count.description ?? "NA"
-        setCounter.text = "0/" + sets
+        //setCounter.text = "0/" + sets
         
             //setup reps
         repCount = modelExcercise?.sets?[0].reps
@@ -185,8 +198,36 @@ class ExcerciseViewController: UIViewController {
         //---
     }
     
+    func hexSubView(){
+        let rect = CGRect(x: 100, y: 100, width: 100, height: 100)
+        hex2 = Bundle.main.loadNibNamed("HexagonView", owner: self, options: nil)?[0] as! UIImageView
+        hex2?.frame = rect
+        self.view.addSubview(hex2!)
+    }
+    
     func popVC(){
         let _ = self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ExcerciseViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
+    }
+}
+
+extension ExcerciseViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath)
+        return cell
     }
 }
 
@@ -198,24 +239,3 @@ extension UIView{
         self.layer.cornerRadius = self.frame.height/2.0
     }
 }
-
-//CODE I DONT CURRENTLY NEED
-
-//    func runTimer(){
-//        timer.invalidate()
-//        seconds = 0
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-//    }
-
-//    func updateTimer(){
-//        seconds += 1
-//        timerText.text = "\(timeString(time: seconds))"
-//    }
-
-
-//    func timeString(time:TimeInterval) -> String{
-//        let minutes = Int(time) / 60 % 60
-//        let seconds = Int(time) % 60
-//        return String(format: "%02i:%02i", minutes, seconds)
-//    }
-

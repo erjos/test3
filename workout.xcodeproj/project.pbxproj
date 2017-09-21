@@ -16,6 +16,9 @@
 		8662042E1F6EE357004CA50A /* WorkoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8662042C1F6EE357004CA50A /* WorkoutTableViewCell.xib */; };
 		866204301F7052A9004CA50A /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8662042F1F7052A9004CA50A /* RoutineViewController.swift */; };
 		866204331F7083E6004CA50A /* WorkoutMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866204321F7083E6004CA50A /* WorkoutMocks.swift */; };
+		86C1BC2F1F7410DC0049897E /* HexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1BC2D1F7410DC0049897E /* HexCollectionViewCell.swift */; };
+		86C1BC301F7410DC0049897E /* HexCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C1BC2E1F7410DC0049897E /* HexCollectionViewCell.xib */; };
+		86C5947B1F736CCF004CB82A /* HexagonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C5947A1F736CCF004CB82A /* HexagonView.xib */; };
 		86CE01A81F698B6D00CD1338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE01A71F698B6D00CD1338 /* AppDelegate.swift */; };
 		86CE01AA1F698B6D00CD1338 /* ExcerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */; };
 		86CE01AD1F698B6D00CD1338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CE01AB1F698B6D00CD1338 /* Main.storyboard */; };
@@ -33,6 +36,9 @@
 		8662042C1F6EE357004CA50A /* WorkoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTableViewCell.xib; sourceTree = "<group>"; };
 		8662042F1F7052A9004CA50A /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		866204321F7083E6004CA50A /* WorkoutMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutMocks.swift; sourceTree = "<group>"; };
+		86C1BC2D1F7410DC0049897E /* HexCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexCollectionViewCell.swift; sourceTree = "<group>"; };
+		86C1BC2E1F7410DC0049897E /* HexCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HexCollectionViewCell.xib; sourceTree = "<group>"; };
+		86C5947A1F736CCF004CB82A /* HexagonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HexagonView.xib; sourceTree = "<group>"; };
 		86CE01A41F698B6D00CD1338 /* workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CE01A71F698B6D00CD1338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseViewController.swift; sourceTree = "<group>"; };
@@ -100,9 +106,12 @@
 				8631A0211F6B54E1004B077B /* WorkoutViewController.swift */,
 				8662042F1F7052A9004CA50A /* RoutineViewController.swift */,
 				8662042B1F6EE357004CA50A /* WorkoutTableViewCell.swift */,
+				86C5947A1F736CCF004CB82A /* HexagonView.xib */,
 				8662042C1F6EE357004CA50A /* WorkoutTableViewCell.xib */,
 				8631A0181F6B1249004B077B /* Models */,
 				866204311F7083C1004CA50A /* Utilities */,
+				86C1BC2D1F7410DC0049897E /* HexCollectionViewCell.swift */,
+				86C1BC2E1F7410DC0049897E /* HexCollectionViewCell.xib */,
 			);
 			path = workout;
 			sourceTree = "<group>";
@@ -167,9 +176,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86C1BC301F7410DC0049897E /* HexCollectionViewCell.xib in Resources */,
 				86CE01B21F698B6D00CD1338 /* LaunchScreen.storyboard in Resources */,
 				86CE01AF1F698B6D00CD1338 /* Assets.xcassets in Resources */,
 				86CE01AD1F698B6D00CD1338 /* Main.storyboard in Resources */,
+				86C5947B1F736CCF004CB82A /* HexagonView.xib in Resources */,
 				8662042E1F6EE357004CA50A /* WorkoutTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +197,7 @@
 				8631A0221F6B54E1004B077B /* WorkoutViewController.swift in Sources */,
 				866204331F7083E6004CA50A /* WorkoutMocks.swift in Sources */,
 				8662042D1F6EE357004CA50A /* WorkoutTableViewCell.swift in Sources */,
+				86C1BC2F1F7410DC0049897E /* HexCollectionViewCell.swift in Sources */,
 				8631A0201F6B14B5004B077B /* Set.swift in Sources */,
 				86CE01A81F698B6D00CD1338 /* AppDelegate.swift in Sources */,
 				8631A01E1F6B14A0004B077B /* Excercise.swift in Sources */,
