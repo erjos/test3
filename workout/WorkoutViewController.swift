@@ -45,20 +45,33 @@ class WorkoutViewController: UIViewController {
             let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
             let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
             collectionCell?.imageView.image = UIImage.init(named: "hexagon_border")
-            
             //set isSetComplete Bool to complete on model - move this into a function
             modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete = true
+        }else{
+            let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
+            let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
+            collectionCell?.imageView.image = UIImage.init(named: "hex_gray_border")
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete = false
         }
     }
     
     //SET VIEW
     func tapCell(){
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
+        
+        if let isSetComplete = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete {
+            setView.hexagon.image = isSetComplete ? UIImage.init(named: "hexagon_border") : UIImage.init(named: "hex_gray_border")
+            setView.toggle.isOn = isSetComplete
+            setView.isSetComplete = isSetComplete
+        }
+        
         let closeTap = UITapGestureRecognizer(target: self, action: #selector(closeSetView))
         closeTap.delegate = self
         setView.addGestureRecognizer(closeTap)
         setView.backgroundColor = setView.backgroundColor?.withAlphaComponent(0.0)
+        
         self.view.addSubview(setView)
+        
         //Completion should eventually dictate when the buttons appear
         UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveLinear, animations: {
             self.setView.backgroundColor = self.setView.backgroundColor?.withAlphaComponent(0.69)
@@ -82,11 +95,8 @@ extension WorkoutViewController: UIGestureRecognizerDelegate{
 
 extension WorkoutViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        tapCell()
-
-        let cell = collectionView.cellForItem(at: indexPath) as! HexCollectionViewCell
         selectedSetIndex = indexPath
+        tapCell()
     }
 }
 
