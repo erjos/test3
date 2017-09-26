@@ -10,6 +10,8 @@ class WorkoutViewController: UIViewController {
     var modelWorkout: Workout?
     var selectedCellIndex: IndexPath?
     
+    var setView: SetView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -33,9 +35,30 @@ class WorkoutViewController: UIViewController {
         excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedCellIndex?.row)!]
     }
     
+    func closeSetView(){
+        self.setView.removeFromSuperview()
+    }
+    
     func doubleTapCell(){
-        let setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
+        setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
+        let closeTap = UITapGestureRecognizer(target: self, action: #selector(closeSetView))
+        closeTap.delegate = self
+        setView.addGestureRecognizer(closeTap)
+        
         self.view.addSubview(setView)
+    }
+}
+
+extension WorkoutViewController: UIGestureRecognizerDelegate{
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        let containedInHex = self.setView.hexagon.frame.contains(touch.location(in: self.setView))
+        
+        if(containedInHex){
+            return false
+        }else{
+            return true
+        }
     }
 }
 

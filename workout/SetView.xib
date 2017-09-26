@@ -22,12 +22,15 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51918343321917804" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.68999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="3v8-li-1sM"/>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-77" id="w97-xV-Ml2"/>
                 <constraint firstAttribute="trailing" secondItem="fEx-oA-WSa" secondAttribute="trailing" constant="-77" id="xLK-t8-XLi"/>
             </constraints>
+            <connections>
+                <outlet property="hexagon" destination="fEx-oA-WSa" id="KdF-gH-Cpy"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
