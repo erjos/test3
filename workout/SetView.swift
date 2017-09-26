@@ -4,6 +4,7 @@ class SetView: UIView {
     
     @IBOutlet weak var hexagon: UIImageView!
     @IBOutlet weak var toggle: UISwitch!
+    @IBOutlet weak var divider: UIView!
     
     var isSetComplete: Bool = false
     

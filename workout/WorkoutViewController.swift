@@ -80,7 +80,7 @@ class WorkoutViewController: UIViewController {
 }
 
 //SET VIEW
-extension WorkoutViewController: UIGestureRecognizerDelegate{
+extension WorkoutViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         let containedInHex = self.setView.hexagon.frame.contains(touch.location(in: self.setView))
@@ -174,8 +174,6 @@ extension WorkoutViewController: UITableViewDelegate {
             let previousCell = tableView.cellForRow(at: selectedExcerciseCellIndex!) as! WorkoutTableViewCell
             previousCell.stroke.isHidden = true
             previousCell.collectionView.isHidden = true
-            //previousCell.startButton.isHidden = true
-            //previousCell.skipButton.isHidden = true
         }
         
         //TODO: encapsulate expand and collapse logic into single method that lives on the custom cell

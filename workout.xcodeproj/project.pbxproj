@@ -82,6 +82,20 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		86C1BC371F7AC3310049897E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				8662042C1F6EE357004CA50A /* WorkoutTableViewCell.xib */,
+				8662042B1F6EE357004CA50A /* WorkoutTableViewCell.swift */,
+				86C1BC311F79F4C10049897E /* SetView.xib */,
+				86C1BC351F79F5FF0049897E /* SetView.swift */,
+				86C1BC2E1F7410DC0049897E /* HexCollectionViewCell.xib */,
+				86C1BC2D1F7410DC0049897E /* HexCollectionViewCell.swift */,
+				86C5947A1F736CCF004CB82A /* HexagonView.xib */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		86CE019B1F698B6D00CD1338 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +115,7 @@
 		86CE01A61F698B6D00CD1338 /* workout */ = {
 			isa = PBXGroup;
 			children = (
+				86C1BC371F7AC3310049897E /* CustomViews */,
 				86CE01A71F698B6D00CD1338 /* AppDelegate.swift */,
 				86CE01AE1F698B6D00CD1338 /* Assets.xcassets */,
 				86CE01B01F698B6D00CD1338 /* LaunchScreen.storyboard */,
@@ -109,15 +124,8 @@
 				86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */,
 				8631A0211F6B54E1004B077B /* WorkoutViewController.swift */,
 				8662042F1F7052A9004CA50A /* RoutineViewController.swift */,
-				8662042B1F6EE357004CA50A /* WorkoutTableViewCell.swift */,
-				8662042C1F6EE357004CA50A /* WorkoutTableViewCell.xib */,
-				86C5947A1F736CCF004CB82A /* HexagonView.xib */,
 				8631A0181F6B1249004B077B /* Models */,
 				866204311F7083C1004CA50A /* Utilities */,
-				86C1BC2D1F7410DC0049897E /* HexCollectionViewCell.swift */,
-				86C1BC2E1F7410DC0049897E /* HexCollectionViewCell.xib */,
-				86C1BC311F79F4C10049897E /* SetView.xib */,
-				86C1BC351F79F5FF0049897E /* SetView.swift */,
 			);
 			path = workout;
 			sourceTree = "<group>";
