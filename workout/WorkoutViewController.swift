@@ -45,6 +45,9 @@ class WorkoutViewController: UIViewController {
             let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
             let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
             collectionCell?.imageView.image = UIImage.init(named: "hexagon_border")
+            
+            //set isSetComplete Bool to complete on model - move this into a function
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete = true
         }
     }
     
@@ -106,14 +109,20 @@ extension WorkoutViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath) as! HexCollectionViewCell
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath)
+        let currentExcercise = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!]
         
-//        let doubletap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapCell))
-//        
-//        doubletap.numberOfTapsRequired = 2
+        guard let isSetComplete = currentExcercise?.sets?[indexPath.row].isSetComplete else {
+            cell.imageView.image = UIImage.init(named: "hex_gray_border")
+            return cell
+        }
         
-        //cell.addGestureRecognizer(doubletap)
+        if(isSetComplete){
+            cell.imageView.image = UIImage.init(named: "hexagon_border")
+        } else {
+            cell.imageView.image = UIImage.init(named: "hex_gray_border")
+        }
             
         return cell
     }
