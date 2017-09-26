@@ -10,6 +10,7 @@ class WorkoutViewController: UIViewController {
     var modelWorkout: Workout?
     var selectedCellIndex: IndexPath?
     
+    //SET VIEW
     var setView: SetView!
     
     override func viewDidLoad() {
@@ -35,20 +36,27 @@ class WorkoutViewController: UIViewController {
         excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedCellIndex?.row)!]
     }
     
+    //SET VIEW
     func closeSetView(){
         self.setView.removeFromSuperview()
     }
     
+    //SET VIEW
     func doubleTapCell(){
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
         let closeTap = UITapGestureRecognizer(target: self, action: #selector(closeSetView))
         closeTap.delegate = self
         setView.addGestureRecognizer(closeTap)
-        
+        setView.backgroundColor = setView.backgroundColor?.withAlphaComponent(0.0)
         self.view.addSubview(setView)
+        //Completion should eventually dictate when the buttons appear
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveLinear, animations: {
+            self.setView.backgroundColor = self.setView.backgroundColor?.withAlphaComponent(0.69)
+        }, completion: nil)
     }
 }
 
+//SET VIEW
 extension WorkoutViewController: UIGestureRecognizerDelegate{
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         

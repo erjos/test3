@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="113" height="95"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hexagon_border" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-cd-VbG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hex_gray_border" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-cd-VbG">
                         <rect key="frame" x="-18" y="0.0" width="149" height="95"/>
                     </imageView>
                 </subviews>
@@ -37,6 +37,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="hexagon_border" width="612" height="792"/>
+        <image name="hex_gray_border" width="612" height="792"/>
     </resources>
 </document>
