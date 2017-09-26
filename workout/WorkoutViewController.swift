@@ -99,7 +99,10 @@ extension WorkoutViewController: UICollectionViewDelegateFlowLayout{
 
 extension WorkoutViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        guard let sets = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?.count else {
+            return 1
+        }
+        return sets
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -167,8 +170,8 @@ extension WorkoutViewController: UITableViewDelegate {
         cell.collectionView.dataSource = self
         cell.collectionView.delegate = self
         
-        //cell.skipButton.isHidden = false
-//        self.performSegue(withIdentifier: "showExcercise", sender: self)
+        //ensures that the collectionView datasource methods are called everytime the cell expands
+        cell.collectionView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
