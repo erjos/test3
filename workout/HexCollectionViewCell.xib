@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hexagon_border" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-cd-VbG">
-                        <rect key="frame" x="-20" y="0.0" width="153" height="95"/>
+                        <rect key="frame" x="-18" y="0.0" width="149" height="95"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="eHf-cd-VbG" secondAttribute="bottom" id="0d0-YB-1Mg"/>
-                <constraint firstItem="eHf-cd-VbG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-20" id="BY0-MD-WIj"/>
-                <constraint firstAttribute="trailing" secondItem="eHf-cd-VbG" secondAttribute="trailing" constant="-20" id="ecH-Hd-kij"/>
+                <constraint firstItem="eHf-cd-VbG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-18" id="BY0-MD-WIj"/>
+                <constraint firstAttribute="trailing" secondItem="eHf-cd-VbG" secondAttribute="trailing" constant="-18" id="ecH-Hd-kij"/>
                 <constraint firstItem="eHf-cd-VbG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="n5E-pu-xTF"/>
             </constraints>
             <size key="customSize" width="316" height="358"/>

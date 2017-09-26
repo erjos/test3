@@ -32,6 +32,40 @@ class WorkoutViewController: UIViewController {
         let excerciseVC = segue.destination as! ExcerciseViewController
         excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedCellIndex?.row)!]
     }
+    
+    func doubleTapCell(){
+        let setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
+        self.view.addSubview(setView)
+    }
+}
+
+extension WorkoutViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 70, height: 70)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
+    }
+}
+
+extension WorkoutViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath)
+        
+        let doubletap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapCell))
+        
+        doubletap.numberOfTapsRequired = 2
+        
+        cell.addGestureRecognizer(doubletap)
+            
+        return cell
+    }
 }
 
 extension WorkoutViewController: UITableViewDataSource {
@@ -44,20 +78,34 @@ extension WorkoutViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
         cell.delegate = self
         cell.title.text = modelWorkout?.excercises?[indexPath.row].name
-        cell.skipButton.isHidden = true
-        cell.startButton.isHidden = true
+        //cell.skipButton.isHidden = true
+        //cell.startButton.isHidden = true
+        cell.collectionView.isHidden = true
         cell.stroke.isHidden = true
+        cell.collectionView.register(UINib.init(nibName: "HexCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "hexCell")
         return cell
     }
 }
 
 extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //this successfuly closes the cell if you click it again, without fucking up the other shit
+        if(selectedCellIndex == indexPath){
+            let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
+            previousCell.stroke.isHidden = true
+            previousCell.collectionView.isHidden = true
+            selectedCellIndex = nil
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            return
+        }
+        
         if(selectedCellIndex != nil){
             let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
             previousCell.stroke.isHidden = true
-            previousCell.startButton.isHidden = true
-            previousCell.skipButton.isHidden = true
+            previousCell.collectionView.isHidden = true
+            //previousCell.startButton.isHidden = true
+            //previousCell.skipButton.isHidden = true
         }
         
         //TODO: encapsulate expand and collapse logic into single method that lives on the custom cell
@@ -65,16 +113,20 @@ extension WorkoutViewController: UITableViewDelegate {
         selectedCellIndex = indexPath
         tableView.reloadRows(at: [indexPath], with: .automatic)
         let cell = tableView.cellForRow(at: indexPath) as! WorkoutTableViewCell
-        cell.startButton.isHidden = false
+        //cell.startButton.isHidden = false
+        cell.collectionView.isHidden = false
         cell.stroke.isHidden = false
-        cell.skipButton.isHidden = false
+        cell.collectionView.dataSource = self
+        cell.collectionView.delegate = self
+        
+        //cell.skipButton.isHidden = false
 //        self.performSegue(withIdentifier: "showExcercise", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let selectedIndex = selectedCellIndex{
             if(indexPath == selectedIndex){
-                return 160.00
+                return 333.0
             }
         }
         return 64.0
