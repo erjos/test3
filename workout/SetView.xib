@@ -15,26 +15,35 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hexagon_border" translatesAutoresizingMaskIntoConstraints="NO" id="fEx-oA-WSa">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hex_gray_border" translatesAutoresizingMaskIntoConstraints="NO" id="fEx-oA-WSa">
                     <rect key="frame" x="-77" y="159" width="529" height="302"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="302" id="lsI-Jt-vFg"/>
                     </constraints>
                 </imageView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-Zs-jzw">
+                    <rect key="frame" x="163" y="512" width="51" height="31"/>
+                    <connections>
+                        <action selector="toggleComplete:" destination="iN0-l3-epB" eventType="valueChanged" id="xeQ-Gw-Rrd"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.68999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="3v8-li-1sM"/>
+                <constraint firstItem="8Jd-Zs-jzw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yyk-9N-Ecp"/>
+                <constraint firstItem="8Jd-Zs-jzw" firstAttribute="top" secondItem="fEx-oA-WSa" secondAttribute="bottom" constant="51" id="jvN-8N-mee"/>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-77" id="w97-xV-Ml2"/>
                 <constraint firstAttribute="trailing" secondItem="fEx-oA-WSa" secondAttribute="trailing" constant="-77" id="xLK-t8-XLi"/>
             </constraints>
             <connections>
                 <outlet property="hexagon" destination="fEx-oA-WSa" id="KdF-gH-Cpy"/>
+                <outlet property="toggle" destination="8Jd-Zs-jzw" id="t8Z-aP-CW0"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
     <resources>
-        <image name="hexagon_border" width="612" height="792"/>
+        <image name="hex_gray_border" width="612" height="792"/>
     </resources>
 </document>
