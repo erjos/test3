@@ -1,6 +1,8 @@
 import Foundation
 
 class Set {
+    var isSetComplete: Bool?
+    
     var weight: Int?
     var reps: Int?
     var toFailure: Bool?

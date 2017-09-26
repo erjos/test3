@@ -8,7 +8,8 @@ class WorkoutViewController: UIViewController {
     @IBOutlet weak var excerciseTable: UITableView!
     
     var modelWorkout: Workout?
-    var selectedCellIndex: IndexPath?
+    var selectedExcerciseCellIndex: IndexPath?
+    var selectedSetIndex: IndexPath?
     
     //SET VIEW
     var setView: SetView!
@@ -33,16 +34,22 @@ class WorkoutViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let excerciseVC = segue.destination as! ExcerciseViewController
-        excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedCellIndex?.row)!]
+        excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!]
     }
     
     //SET VIEW
     func closeSetView(){
         self.setView.removeFromSuperview()
+        if(setView.isSetComplete){
+            //set collectionview cell image to complete
+            let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
+            let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
+            collectionCell?.imageView.image = UIImage.init(named: "hexagon_border")
+        }
     }
     
     //SET VIEW
-    func doubleTapCell(){
+    func tapCell(){
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
         let closeTap = UITapGestureRecognizer(target: self, action: #selector(closeSetView))
         closeTap.delegate = self
@@ -70,6 +77,16 @@ extension WorkoutViewController: UIGestureRecognizerDelegate{
     }
 }
 
+extension WorkoutViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        tapCell()
+
+        let cell = collectionView.cellForItem(at: indexPath) as! HexCollectionViewCell
+        selectedSetIndex = indexPath
+    }
+}
+
 extension WorkoutViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 70, height: 70)
@@ -89,11 +106,11 @@ extension WorkoutViewController: UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath)
         
-        let doubletap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapCell))
+//        let doubletap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapCell))
+//        
+//        doubletap.numberOfTapsRequired = 2
         
-        doubletap.numberOfTapsRequired = 2
-        
-        cell.addGestureRecognizer(doubletap)
+        //cell.addGestureRecognizer(doubletap)
             
         return cell
     }
@@ -122,17 +139,17 @@ extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //this successfuly closes the cell if you click it again, without fucking up the other shit
-        if(selectedCellIndex == indexPath){
-            let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
+        if(selectedExcerciseCellIndex == indexPath){
+            let previousCell = tableView.cellForRow(at: selectedExcerciseCellIndex!) as! WorkoutTableViewCell
             previousCell.stroke.isHidden = true
             previousCell.collectionView.isHidden = true
-            selectedCellIndex = nil
+            selectedExcerciseCellIndex = nil
             tableView.reloadRows(at: [indexPath], with: .automatic)
             return
         }
         
-        if(selectedCellIndex != nil){
-            let previousCell = tableView.cellForRow(at: selectedCellIndex!) as! WorkoutTableViewCell
+        if(selectedExcerciseCellIndex != nil){
+            let previousCell = tableView.cellForRow(at: selectedExcerciseCellIndex!) as! WorkoutTableViewCell
             previousCell.stroke.isHidden = true
             previousCell.collectionView.isHidden = true
             //previousCell.startButton.isHidden = true
@@ -141,7 +158,7 @@ extension WorkoutViewController: UITableViewDelegate {
         
         //TODO: encapsulate expand and collapse logic into single method that lives on the custom cell
         //If an already expanded cell is re-selected, then collapse the cell
-        selectedCellIndex = indexPath
+        selectedExcerciseCellIndex = indexPath
         tableView.reloadRows(at: [indexPath], with: .automatic)
         let cell = tableView.cellForRow(at: indexPath) as! WorkoutTableViewCell
         //cell.startButton.isHidden = false
@@ -155,7 +172,7 @@ extension WorkoutViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let selectedIndex = selectedCellIndex{
+        if let selectedIndex = selectedExcerciseCellIndex{
             if(indexPath == selectedIndex){
                 return 333.0
             }
