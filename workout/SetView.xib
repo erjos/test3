@@ -26,31 +26,40 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50B-A1-dYe">
                             <rect key="frame" x="5" y="23" width="30" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="97e-Fd-JBw"/>
                                 <constraint firstAttribute="height" constant="30" id="c3G-h4-WRc"/>
                             </constraints>
-                            <state key="normal" title="-"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <state key="normal" title="-">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="weightDecrease:" destination="iN0-l3-epB" eventType="touchUpInside" id="wX0-8o-r7K"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKP-sX-5o9">
                             <rect key="frame" x="110" y="23" width="30" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="GNE-6N-shE"/>
                                 <constraint firstAttribute="width" constant="30" id="ic8-CK-uRZ"/>
                             </constraints>
-                            <state key="normal" title="+"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="weightIncrease:" destination="iN0-l3-epB" eventType="touchUpInside" id="W94-0T-DNv"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="135" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUX-o0-qJU">
                             <rect key="frame" x="50" y="16" width="45" height="45"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="UuV-M6-woN"/>
                                 <constraint firstAttribute="height" constant="45" id="qio-Re-nBD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -71,31 +80,40 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-nT-BGO">
                             <rect key="frame" x="5" y="23" width="30" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="RWl-9o-xzy"/>
                                 <constraint firstAttribute="height" constant="30" id="jJ4-fJ-AWB"/>
                             </constraints>
-                            <state key="normal" title="-"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <state key="normal" title="-">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="repDecrease:" destination="iN0-l3-epB" eventType="touchUpInside" id="YSK-oo-F4q"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmx-ge-GWG">
                             <rect key="frame" x="110" y="23" width="30" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="RUy-G1-cxl"/>
                                 <constraint firstAttribute="height" constant="30" id="ujk-yJ-J9e"/>
                             </constraints>
-                            <state key="normal" title="+"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="repIncrease:" destination="iN0-l3-epB" eventType="touchUpInside" id="j2c-mu-LOp"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u30-lY-bM2">
                             <rect key="frame" x="50" y="16" width="45" height="45"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="fVl-LN-vdZ"/>
                                 <constraint firstAttribute="height" constant="45" id="pXo-aW-Dn9"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -118,14 +136,16 @@
                     </connections>
                 </switch>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxV-uB-xP4" userLabel="Divider">
-                    <rect key="frame" x="55" y="307" width="265" height="6"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="55" y="310" width="265" height="1"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Wfz-EU-Bpo"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.68999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="3v8-li-1sM"/>
-                <constraint firstItem="WJM-Qb-0xy" firstAttribute="top" secondItem="OxV-uB-xP4" secondAttribute="bottom" constant="14" id="6zV-AG-ggh"/>
                 <constraint firstAttribute="trailing" secondItem="OxV-uB-xP4" secondAttribute="trailing" constant="55" id="AZw-aa-ALx"/>
                 <constraint firstItem="8Jd-Zs-jzw" firstAttribute="top" secondItem="WJM-Qb-0xy" secondAttribute="bottom" constant="108" id="Kpk-Lq-Nei"/>
                 <constraint firstItem="8Jd-Zs-jzw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yyk-9N-Ecp"/>
@@ -135,13 +155,19 @@
                 <constraint firstItem="CNy-5P-VrE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sWi-8G-fmD"/>
                 <constraint firstItem="WJM-Qb-0xy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vrZ-yf-pQt"/>
                 <constraint firstItem="fEx-oA-WSa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-77" id="w97-xV-Ml2"/>
-                <constraint firstItem="OxV-uB-xP4" firstAttribute="top" secondItem="CNy-5P-VrE" secondAttribute="bottom" constant="16" id="wFV-4v-R0B"/>
+                <constraint firstItem="OxV-uB-xP4" firstAttribute="top" secondItem="CNy-5P-VrE" secondAttribute="bottom" constant="19" id="wFV-4v-R0B"/>
                 <constraint firstAttribute="trailing" secondItem="fEx-oA-WSa" secondAttribute="trailing" constant="-77" id="xLK-t8-XLi"/>
             </constraints>
             <connections>
                 <outlet property="divider" destination="OxV-uB-xP4" id="wJe-k2-f68"/>
                 <outlet property="hexagon" destination="fEx-oA-WSa" id="KdF-gH-Cpy"/>
+                <outlet property="repCount" destination="u30-lY-bM2" id="v12-rm-RXb"/>
+                <outlet property="repMinus" destination="nwZ-nT-BGO" id="sAm-Jw-lEa"/>
+                <outlet property="repPlus" destination="fmx-ge-GWG" id="kfQ-qG-LLj"/>
                 <outlet property="toggle" destination="8Jd-Zs-jzw" id="t8Z-aP-CW0"/>
+                <outlet property="weightCount" destination="tUX-o0-qJU" id="CG1-dU-3Yf"/>
+                <outlet property="weightMinus" destination="50B-A1-dYe" id="o8t-0O-sXp"/>
+                <outlet property="weightPlus" destination="SKP-sX-5o9" id="nob-1H-Ljk"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>

@@ -82,14 +82,8 @@ class WorkoutViewController: UIViewController {
 //SET VIEW
 extension WorkoutViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
         let containedInHex = self.setView.hexagon.frame.contains(touch.location(in: self.setView))
-        
-        if(containedInHex){
-            return false
-        }else{
-            return true
-        }
+        return !containedInHex
     }
 }
 
@@ -120,7 +114,6 @@ extension WorkoutViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hexCell", for: indexPath) as! HexCollectionViewCell
-        
         let currentExcercise = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!]
         
         guard let isSetComplete = currentExcercise?.sets?[indexPath.row].isSetComplete else {
@@ -148,8 +141,6 @@ extension WorkoutViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WorkoutTableViewCell
         cell.delegate = self
         cell.title.text = modelWorkout?.excercises?[indexPath.row].name
-        //cell.skipButton.isHidden = true
-        //cell.startButton.isHidden = true
         cell.collectionView.isHidden = true
         cell.stroke.isHidden = true
         cell.collectionView.register(UINib.init(nibName: "HexCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "hexCell")
@@ -177,17 +168,15 @@ extension WorkoutViewController: UITableViewDelegate {
         }
         
         //TODO: encapsulate expand and collapse logic into single method that lives on the custom cell
-        //If an already expanded cell is re-selected, then collapse the cell
         selectedExcerciseCellIndex = indexPath
         tableView.reloadRows(at: [indexPath], with: .automatic)
         let cell = tableView.cellForRow(at: indexPath) as! WorkoutTableViewCell
-        //cell.startButton.isHidden = false
         cell.collectionView.isHidden = false
         cell.stroke.isHidden = false
         cell.collectionView.dataSource = self
         cell.collectionView.delegate = self
         
-        //ensures that the collectionView datasource methods are called everytime the cell expands
+        //Ensures that the collectionView datasource methods are called everytime the cell expands
         cell.collectionView.reloadData()
     }
     

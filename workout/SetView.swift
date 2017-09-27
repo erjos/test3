@@ -6,6 +6,51 @@ class SetView: UIView {
     @IBOutlet weak var toggle: UISwitch!
     @IBOutlet weak var divider: UIView!
     
+    @IBOutlet weak var weightMinus: UIButton!
+    @IBOutlet weak var weightPlus: UIButton!
+    @IBOutlet weak var weightCount: UILabel!
+    
+    @IBOutlet weak var repMinus: UIButton!
+    @IBOutlet weak var repPlus: UIButton!
+    @IBOutlet weak var repCount: UILabel!
+    
+    private var repCounter: Int?
+    private var weightCounter: Int?
+    
+    
+    @IBAction func weightDecrease(_ sender: Any) {
+        guard let weight = weightCounter else {
+            return
+        }
+        weightCounter = weight - 5
+        weightCount.text = weightCounter?.description
+    }
+    
+    @IBAction func weightIncrease(_ sender: Any) {
+        guard let weight = weightCounter else {
+            return
+        }
+        weightCounter = weight + 5
+        weightCount.text = weightCounter?.description
+    }
+    
+    @IBAction func repDecrease(_ sender: Any) {
+        guard let reps = repCounter else {
+            return
+        }
+        repCounter = reps - 1
+        repCount.text = repCounter?.description
+    }
+    
+    @IBAction func repIncrease(_ sender: Any) {
+        guard let reps = repCounter else {
+            return
+        }
+        repCounter = reps + 1
+        repCount.text = repCounter?.description
+    }
+    
+    
     var isSetComplete: Bool = false
     
     func setComplete(){
