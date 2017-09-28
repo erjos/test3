@@ -88,7 +88,7 @@ class ExcerciseViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateBreakTimer), userInfo: nil, repeats: true)
     }
     
-    func updateBreakTimer(){
+    @objc func updateBreakTimer(){
         if(seconds == 0){
             startNextSet()
             return
@@ -205,7 +205,7 @@ class ExcerciseViewController: UIViewController {
         self.view.addSubview(hex2!)
     }
     
-    func popVC(){
+    @objc func popVC(){
         let _ = self.navigationController?.popViewController(animated: true)
     }
 }

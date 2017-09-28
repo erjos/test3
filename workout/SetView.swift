@@ -66,5 +66,10 @@ class SetView: UIView {
     @IBAction func toggleComplete(_ sender: Any) {
         self.hexagon.image = isSetComplete ? UIImage.init(named: "hex_gray_border") : UIImage.init(named: "hexagon_border")
         isSetComplete = !isSetComplete
+        
+        //Style Buttons correctly - colors changes depending on the condition
+//        weightMinus.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .normal)
+//        weightPlus.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .normal)
+//        weightCount
     }
 }

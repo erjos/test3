@@ -17,7 +17,6 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        //currentWorkout = mockChestWorkout()
         currentWorkoutTitle.title = (modelWorkout?.concentration)! + " Workout"
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
@@ -28,7 +27,7 @@ class WorkoutViewController: UIViewController {
         backItem.customView = imageView
     }
     
-    func popVC(){
+    @objc func popVC(){
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
@@ -38,7 +37,7 @@ class WorkoutViewController: UIViewController {
     }
     
     //SET VIEW
-    func closeSetView(){
+    @objc func closeSetView(){
         self.setView.removeFromSuperview()
         if(setView.isSetComplete){
             //set collectionview cell image to complete
