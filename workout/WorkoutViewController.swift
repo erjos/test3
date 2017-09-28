@@ -64,7 +64,7 @@ class WorkoutViewController: UIViewController {
         setView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         
         if let isSetComplete = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete {
-            setView.hexagon.image = isSetComplete ? UIImage.init(named: "hexagon_border") : UIImage.init(named: "hex_gray_border")
+            setView.styleView(isSetComplete: isSetComplete)
             setView.toggle.isOn = isSetComplete
             setView.isSetComplete = isSetComplete
         }

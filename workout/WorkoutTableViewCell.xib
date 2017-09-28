@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,7 +51,7 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gDJ-jT-Dbp">
-                        <rect key="frame" x="8" y="65" width="364" height="100"/>
+                        <rect key="frame" x="8" y="75" width="364" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="PY9-Ko-5vG"/>
@@ -67,7 +67,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Syb-4X-7sS" secondAttribute="trailing" id="CwU-Y3-Nro"/>
                     <constraint firstItem="Syb-4X-7sS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F6P-Iu-nXJ"/>
-                    <constraint firstItem="gDJ-jT-Dbp" firstAttribute="top" secondItem="ZZX-bF-QoJ" secondAttribute="bottom" id="FPo-ss-9Bi"/>
+                    <constraint firstItem="gDJ-jT-Dbp" firstAttribute="top" secondItem="ZZX-bF-QoJ" secondAttribute="bottom" constant="10" id="FPo-ss-9Bi"/>
                     <constraint firstAttribute="bottom" secondItem="ZxB-cD-VaI" secondAttribute="bottom" id="awB-le-pWg"/>
                     <constraint firstItem="Syb-4X-7sS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eLp-cX-Zli"/>
                     <constraint firstItem="ZxB-cD-VaI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fTt-Sf-tFQ"/>
