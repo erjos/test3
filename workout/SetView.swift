@@ -17,6 +17,8 @@ class SetView: UIView {
     private var repCounter: Int?
     private var weightCounter: Int?
     
+    let blue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 255/255)
+    let offWhite = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 255/255)
     
     @IBAction func weightDecrease(_ sender: Any) {
         guard let weight = weightCounter else {
@@ -53,23 +55,24 @@ class SetView: UIView {
     
     var isSetComplete: Bool = false
     
-    func setComplete(){
-        self.hexagon.image = UIImage.init(named: "hexagon_border")
-        isSetComplete = true
+    func styleView(isSetComplete: Bool){
+        self.hexagon.image = isSetComplete ? UIImage.init(named: "hexagon_border") : UIImage.init(named: "hex_gray_border")
+        let itemColor = isSetComplete ? offWhite : blue
+        setViewItemColor(color: itemColor)
     }
     
-    func setIncomplete(){
-        self.hexagon.image = UIImage.init(named: "hex_gray_border")
-        isSetComplete = false
+    func setViewItemColor(color: UIColor) {
+        weightMinus.setTitleColor(color, for: .normal)
+        weightPlus.setTitleColor(color, for: .normal)
+        weightCount.textColor = color
+        repMinus.setTitleColor(color, for: .normal)
+        repPlus.setTitleColor(color, for: .normal)
+        repCount.textColor = color
+        divider.backgroundColor = color
     }
     
     @IBAction func toggleComplete(_ sender: Any) {
-        self.hexagon.image = isSetComplete ? UIImage.init(named: "hex_gray_border") : UIImage.init(named: "hexagon_border")
         isSetComplete = !isSetComplete
-        
-        //Style Buttons correctly - colors changes depending on the condition
-//        weightMinus.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .normal)
-//        weightPlus.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .normal)
-//        weightCount
+        styleView(isSetComplete: isSetComplete)
     }
 }
