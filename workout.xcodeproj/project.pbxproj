@@ -22,7 +22,6 @@
 		86C1BC361F79F5FF0049897E /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1BC351F79F5FF0049897E /* SetView.swift */; };
 		86C5947B1F736CCF004CB82A /* HexagonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C5947A1F736CCF004CB82A /* HexagonView.xib */; };
 		86CE01A81F698B6D00CD1338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE01A71F698B6D00CD1338 /* AppDelegate.swift */; };
-		86CE01AA1F698B6D00CD1338 /* ExcerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */; };
 		86CE01AD1F698B6D00CD1338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CE01AB1F698B6D00CD1338 /* Main.storyboard */; };
 		86CE01AF1F698B6D00CD1338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86CE01AE1F698B6D00CD1338 /* Assets.xcassets */; };
 		86CE01B21F698B6D00CD1338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CE01B01F698B6D00CD1338 /* LaunchScreen.storyboard */; };
@@ -45,7 +44,6 @@
 		86C5947A1F736CCF004CB82A /* HexagonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HexagonView.xib; sourceTree = "<group>"; };
 		86CE01A41F698B6D00CD1338 /* workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CE01A71F698B6D00CD1338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseViewController.swift; sourceTree = "<group>"; };
 		86CE01AC1F698B6D00CD1338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86CE01AE1F698B6D00CD1338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86CE01B11F698B6D00CD1338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				8662042F1F7052A9004CA50A /* RoutineViewController.swift */,
 				8631A0181F6B1249004B077B /* Models */,
 				866204311F7083C1004CA50A /* Utilities */,
-				86CE01A91F698B6D00CD1338 /* ExcerciseViewController.swift */,
 			);
 			path = workout;
 			sourceTree = "<group>";
@@ -209,7 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8631A01C1F6B127E004B077B /* Workout.swift in Sources */,
-				86CE01AA1F698B6D00CD1338 /* ExcerciseViewController.swift in Sources */,
 				8631A0221F6B54E1004B077B /* WorkoutViewController.swift in Sources */,
 				866204331F7083E6004CA50A /* WorkoutMocks.swift in Sources */,
 				8662042D1F6EE357004CA50A /* WorkoutTableViewCell.swift in Sources */,
@@ -357,7 +353,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erj.workout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -371,7 +367,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erj.workout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

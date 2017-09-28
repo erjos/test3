@@ -31,11 +31,6 @@ class WorkoutViewController: UIViewController {
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let excerciseVC = segue.destination as! ExcerciseViewController
-        excerciseVC.modelExcercise = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!]
-    }
-    
     //SET VIEW
     @objc func closeSetView(){
         self.setView.removeFromSuperview()
@@ -57,6 +52,8 @@ class WorkoutViewController: UIViewController {
     //SET VIEW
     func tapCell(){
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
+        
+        setView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         
         if let isSetComplete = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete {
             setView.hexagon.image = isSetComplete ? UIImage.init(named: "hexagon_border") : UIImage.init(named: "hex_gray_border")
