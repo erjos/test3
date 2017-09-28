@@ -24,7 +24,15 @@ class WorkoutViewController: UIViewController {
         imageView.image = image
         let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
         imageView.addGestureRecognizer(gestures)
+        
+        //setup constranints for buttons?
+        let height = imageView.heightAnchor.constraint(equalToConstant: 32.0)
+        let width = imageView.widthAnchor.constraint(equalToConstant: 32.0)
+        height.isActive = true
+        width.isActive = true
+        
         backItem.customView = imageView
+        backItem.width = 32
     }
     
     @objc func popVC(){
