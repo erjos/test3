@@ -14,8 +14,21 @@ class SetView: UIView {
     @IBOutlet weak var repPlus: UIButton!
     @IBOutlet weak var repCount: UILabel!
     
-    private var repCounter: Int?
-    private var weightCounter: Int?
+    var repCounter: Int?
+    var weightCounter: Int?
+    
+    func setRepCounter(reps: Int?){
+        repCounter = reps
+        if let count = reps?.description {
+            repCount.text = count
+        }
+    }
+    func setWeightCounter(weight: Int?){
+        weightCounter = weight
+        if let count = weight?.description {
+            weightCount.text = count
+        }
+    }
     
     let blue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 255/255)
     let offWhite = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 255/255)

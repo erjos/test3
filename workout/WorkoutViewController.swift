@@ -25,14 +25,14 @@ class WorkoutViewController: UIViewController {
         let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
         imageView.addGestureRecognizer(gestures)
         
-        //setup constranints for buttons?
+        //setup constranints for buttons
         let height = imageView.heightAnchor.constraint(equalToConstant: 32.0)
         let width = imageView.widthAnchor.constraint(equalToConstant: 32.0)
         height.isActive = true
         width.isActive = true
         
         backItem.customView = imageView
-        backItem.width = 32
+        //backItem.width = 32
     }
     
     @objc func popVC(){
@@ -47,13 +47,23 @@ class WorkoutViewController: UIViewController {
             let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
             let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
             collectionCell?.imageView.image = UIImage.init(named: "hexagon_border")
+            
             //set isSetComplete Bool to complete on model - move this into a function
             modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete = true
+            
+            //update weight and reps on the set
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].weight = setView.weightCounter
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].reps = setView.repCounter
+            
         }else{
             let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
             let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
             collectionCell?.imageView.image = UIImage.init(named: "hex_gray_border")
             modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete = false
+            
+            //update weight and reps on the set
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].weight = setView.weightCounter
+            modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].reps = setView.repCounter
         }
     }
     
@@ -62,6 +72,13 @@ class WorkoutViewController: UIViewController {
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
         
         setView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        
+        let set = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!]
+        let reps = set?.reps
+        let weight = set?.weight
+        
+        setView.setRepCounter(reps: reps)
+        setView.setWeightCounter(weight: weight)
         
         if let isSetComplete = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].isSetComplete {
             setView.styleView(isSetComplete: isSetComplete)
