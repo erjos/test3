@@ -113,7 +113,6 @@
 		86CE01A61F698B6D00CD1338 /* workout */ = {
 			isa = PBXGroup;
 			children = (
-				86C1BC371F7AC3310049897E /* CustomViews */,
 				86CE01A71F698B6D00CD1338 /* AppDelegate.swift */,
 				86CE01AE1F698B6D00CD1338 /* Assets.xcassets */,
 				86CE01B01F698B6D00CD1338 /* LaunchScreen.storyboard */,
@@ -123,6 +122,7 @@
 				8662042F1F7052A9004CA50A /* RoutineViewController.swift */,
 				8631A0181F6B1249004B077B /* Models */,
 				866204311F7083C1004CA50A /* Utilities */,
+				86C1BC371F7AC3310049897E /* CustomViews */,
 			);
 			path = workout;
 			sourceTree = "<group>";

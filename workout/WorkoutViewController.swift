@@ -17,7 +17,13 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         excerciseTable.register(UINib.init(nibName: "WorkoutTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        currentWorkoutTitle.title = (modelWorkout?.concentration)! + " Workout"
+        
+        //setup page label
+        let label = UILabel()
+        label.text = (modelWorkout?.concentration)! + " Workout"
+        label.textColor = UIColor.white
+        currentWorkoutTitle.customView = label
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "left-arrow")

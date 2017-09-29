@@ -17,7 +17,10 @@ class RoutineViewController: UIViewController {
         
         //Hides nav bar shadow for current page
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.routineLabel.title = routine?.name
+        let label = UILabel()
+        label.text = routine?.name
+        label.textColor = UIColor.white
+        routineLabel.customView = label
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
