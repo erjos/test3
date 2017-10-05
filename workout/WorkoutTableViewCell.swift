@@ -2,26 +2,23 @@ import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var check: UIImageView!
+    @IBOutlet weak var circle: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var stroke: UIView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
     
     weak var delegate: WorkoutTableViewCellDelegate?
     
-    @IBAction func start(_ sender: Any) {
-        delegate?.didHitStartButton(cell: self)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.check.isHidden = true
     }
 
     @IBAction func startAction(_ sender: Any) {
         
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

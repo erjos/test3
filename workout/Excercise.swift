@@ -10,4 +10,14 @@ class Excercise{
         self.sets = sets
     }
     
+    //returns true if all the sets in the Excercise are complete
+    public func isExerciseComplete() -> Bool {
+        guard let sets = self.sets else {
+            return false
+        }
+        for set in sets{
+            if(!set.isSetComplete) { return false }
+        }
+        return true
+    }
 }

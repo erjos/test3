@@ -24,21 +24,19 @@ class WorkoutViewController: UIViewController {
         label.textColor = UIColor.white
         currentWorkoutTitle.customView = label
         
+        //setup back arrow
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "left-arrow")
         imageView.image = image
         let gestures = UITapGestureRecognizer(target: self, action: #selector(popVC))
         imageView.addGestureRecognizer(gestures)
-        
-        //setup constranints for buttons
+        //setup constranints for arrow
         let height = imageView.heightAnchor.constraint(equalToConstant: 32.0)
         let width = imageView.widthAnchor.constraint(equalToConstant: 32.0)
         height.isActive = true
         width.isActive = true
-        
         backItem.customView = imageView
-        //backItem.width = 32
     }
     
     @objc func popVC(){
@@ -61,6 +59,12 @@ class WorkoutViewController: UIViewController {
             modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].weight = setView.weightCounter
             modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!].reps = setView.repCounter
             
+            let exercise = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!]
+            
+            if (exercise?.isExerciseComplete())! {
+                //call did select row on current selection to collapse and trigger data reload which should update the cell to its completed state
+                tableView(excerciseTable, didSelectRowAt: selectedExcerciseCellIndex!)
+            }
         }else{
             let tableCell = excerciseTable.cellForRow(at: selectedExcerciseCellIndex!) as? WorkoutTableViewCell
             let collectionCell = tableCell?.collectionView.cellForItem(at: selectedSetIndex!) as? HexCollectionViewCell
@@ -171,6 +175,13 @@ extension WorkoutViewController: UITableViewDataSource {
         cell.collectionView.isHidden = true
         cell.stroke.isHidden = true
         cell.collectionView.register(UINib.init(nibName: "HexCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "hexCell")
+        
+        let exercise = modelWorkout?.excercises?[(indexPath.row)]
+        let isComplete = (exercise?.isExerciseComplete())!
+        //show or hide check if excercise is complete
+        cell.check.isHidden = !isComplete
+        cell.circle.isHidden = isComplete
+
         return cell
     }
 }

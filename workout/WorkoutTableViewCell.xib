@@ -23,17 +23,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="380" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnU-aD-wPO">
-                                <rect key="frame" x="20" y="21" width="42" height="21"/>
+                                <rect key="frame" x="50" y="21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uncheckedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="whp-f8-Ru3" userLabel="circle">
+                                <rect key="frame" x="10" y="17" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="8dI-3r-DsQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="oTG-L8-fHA"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="K0C-Pg-7NH" userLabel="check">
+                                <rect key="frame" x="13" y="16" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="rfQ-cq-LXO"/>
+                                    <constraint firstAttribute="height" constant="30" id="u8P-ja-tgW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bnU-aD-wPO" firstAttribute="leading" secondItem="whp-f8-Ru3" secondAttribute="trailing" constant="10" id="E2Z-kg-teh"/>
+                            <constraint firstItem="whp-f8-Ru3" firstAttribute="leading" secondItem="Syb-4X-7sS" secondAttribute="leading" constant="10" id="Tkv-w5-eVG"/>
                             <constraint firstAttribute="height" constant="64" id="XIr-ZT-y0p"/>
+                            <constraint firstItem="K0C-Pg-7NH" firstAttribute="top" secondItem="Syb-4X-7sS" secondAttribute="top" constant="16" id="eSn-q9-CDb"/>
                             <constraint firstItem="bnU-aD-wPO" firstAttribute="centerY" secondItem="Syb-4X-7sS" secondAttribute="centerY" id="hAT-FD-jcJ"/>
-                            <constraint firstItem="bnU-aD-wPO" firstAttribute="leading" secondItem="Syb-4X-7sS" secondAttribute="leading" constant="20" id="ykh-gQ-rJD"/>
+                            <constraint firstItem="whp-f8-Ru3" firstAttribute="centerY" secondItem="Syb-4X-7sS" secondAttribute="centerY" id="igb-np-eKZ"/>
+                            <constraint firstItem="K0C-Pg-7NH" firstAttribute="leading" secondItem="Syb-4X-7sS" secondAttribute="leading" constant="13" id="q9M-U2-4P1"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZX-bF-QoJ" userLabel="Stroke">
@@ -81,6 +99,8 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="check" destination="K0C-Pg-7NH" id="MAA-f9-iya"/>
+                <outlet property="circle" destination="whp-f8-Ru3" id="Gob-Wg-Jlh"/>
                 <outlet property="collectionView" destination="gDJ-jT-Dbp" id="oCC-E8-zij"/>
                 <outlet property="stroke" destination="ZZX-bF-QoJ" id="bV9-jP-mnL"/>
                 <outlet property="title" destination="bnU-aD-wPO" id="YJt-Q1-2eb"/>
@@ -88,4 +108,8 @@
             <point key="canvasLocation" x="24" y="198.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checkedCircle" width="612" height="792"/>
+        <image name="uncheckedCircle" width="612" height="792"/>
+    </resources>
 </document>
