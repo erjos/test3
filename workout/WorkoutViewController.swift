@@ -22,6 +22,7 @@ class WorkoutViewController: UIViewController {
         let label = UILabel()
         label.text = (modelWorkout?.concentration)! + " Workout"
         label.textColor = UIColor.white
+        label.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
         currentWorkoutTitle.customView = label
         
         //setup back arrow
