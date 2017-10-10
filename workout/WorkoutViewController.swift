@@ -22,6 +22,7 @@ class WorkoutViewController: UIViewController {
         let label = UILabel()
         label.text = (modelWorkout?.concentration)! + " Workout"
         label.textColor = UIColor.white
+        //For whatever reason if you don't set the frame on these labels they wont appear (wasn't necessary before the upgrade)
         label.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
         currentWorkoutTitle.customView = label
         
@@ -81,7 +82,7 @@ class WorkoutViewController: UIViewController {
     //SET VIEW
     func tapCell(){
         setView = Bundle.main.loadNibNamed("SetView", owner: self, options: nil)?[0] as! SetView
-        
+        setView.delegate = self
         setView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         
         let set = modelWorkout?.excercises?[(selectedExcerciseCellIndex?.row)!].sets?[(selectedSetIndex?.row)!]
@@ -179,9 +180,10 @@ extension WorkoutViewController: UITableViewDataSource {
         
         let exercise = modelWorkout?.excercises?[(indexPath.row)]
         let isComplete = (exercise?.isExerciseComplete())!
+        
         //show or hide check if excercise is complete
-        cell.check.isHidden = !isComplete
-        cell.circle.isHidden = isComplete
+        //cell.check.isHidden = !isComplete
+        cell.circle.image = isComplete ? UIImage(named: "filled_circle") : UIImage(named: "uncheckedCircle")
 
         return cell
     }
@@ -222,7 +224,7 @@ extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let selectedIndex = selectedExcerciseCellIndex{
             if(indexPath == selectedIndex){
-                return 333.0
+                return  175.0
             }
         }
         return 64.0
@@ -232,5 +234,11 @@ extension WorkoutViewController: UITableViewDelegate {
 extension WorkoutViewController: WorkoutTableViewCellDelegate{
     func didHitStartButton(cell: WorkoutTableViewCell) {
         self.performSegue(withIdentifier: "showExcercise", sender: self)
+    }
+}
+
+extension WorkoutViewController: SetViewDelegate{
+    func setViewDelegate(didToggleComplete setView: SetView) {
+        self.closeSetView()
     }
 }

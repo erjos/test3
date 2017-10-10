@@ -16,6 +16,7 @@ class SetView: UIView {
     
     var repCounter: Int?
     var weightCounter: Int?
+    weak var delegate: SetViewDelegate?
     
     func setRepCounter(reps: Int?){
         repCounter = reps
@@ -87,5 +88,10 @@ class SetView: UIView {
     @IBAction func toggleComplete(_ sender: Any) {
         isSetComplete = !isSetComplete
         styleView(isSetComplete: isSetComplete)
+        self.delegate?.setViewDelegate(didToggleComplete: self)
     }
+}
+
+protocol SetViewDelegate: class {
+    func setViewDelegate(didToggleComplete setView: SetView)
 }
