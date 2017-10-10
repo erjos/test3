@@ -182,8 +182,12 @@ extension WorkoutViewController: UITableViewDataSource {
         let isComplete = (exercise?.isExerciseComplete())!
         
         //show or hide check if excercise is complete
-        //cell.check.isHidden = !isComplete
-        cell.circle.image = isComplete ? UIImage(named: "filled_circle") : UIImage(named: "uncheckedCircle")
+        cell.check.isHidden = !isComplete
+        
+        cell.circle.isHidden = isComplete
+        let transparentBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 255/255)
+        cell.collapsedView.backgroundColor = isComplete ? transparentBlue.withAlphaComponent(0.1) : UIColor.white
+        //cell.circle.image = isComplete ? UIImage(named: "filled_circle") : UIImage(named: "uncheckedCircle")
 
         return cell
     }

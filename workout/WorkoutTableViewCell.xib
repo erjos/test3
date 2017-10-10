@@ -101,6 +101,7 @@
             <connections>
                 <outlet property="check" destination="K0C-Pg-7NH" id="MAA-f9-iya"/>
                 <outlet property="circle" destination="whp-f8-Ru3" id="Gob-Wg-Jlh"/>
+                <outlet property="collapsedView" destination="Syb-4X-7sS" id="AIQ-ut-0pX"/>
                 <outlet property="collectionView" destination="gDJ-jT-Dbp" id="oCC-E8-zij"/>
                 <outlet property="stroke" destination="ZZX-bF-QoJ" id="bV9-jP-mnL"/>
                 <outlet property="title" destination="bnU-aD-wPO" id="YJt-Q1-2eb"/>

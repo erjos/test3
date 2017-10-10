@@ -2,6 +2,7 @@ import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var collapsedView: UIView!
     @IBOutlet weak var check: UIImageView!
     @IBOutlet weak var circle: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
